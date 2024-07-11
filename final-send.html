@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontaktseite</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            height: 580px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            align-items: center;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        .header h1 {
+            font-size: 24px;
+            margin: 10px;
+
+            align-items: center;
+        }
+        .header .subheader {
+            font-size: 15px;
+            margin: 10px;
+            color: rgb(107, 105, 105);
+        }
+        .message-box {
+            margin-bottom: 20px;
+        
+        }
+        .message-box textarea {
+            width: 95%;
+            margin-top: 6px;
+            padding: 10px;
+            border: 1.6px solid #c3c1c1;
+            box-shadow: 0px 4px 6px rgba(94, 94, 94, 0.05);
+            margin-right: 10px;
+            margin-left: 10px;
+            border-radius: 10px;
+            resize: vertical;
+        }
+
+.textarea ::placeholder {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+        .message-box label {
+            font-size: 15px;
+            margin-left: 11px;
+            
+            margin-bottom: 4px;
+            color: rgb(96, 95, 95);
+        }
+        .sender-info {
+            margin-bottom: 20px;
+        }
+        .sender-info input {
+            width: 95%;
+            padding: 10px;
+            border: 1.6px solid #c3c1c1;
+            box-shadow: 0px 4px 6px rgba(148, 148, 148, 0.05);
+            border-radius: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .send-button {
+            width: 70%;
+            align-items: center;
+            padding: 10px;
+            margin-left: 85px;
+            margin-right: 85px;
+            border: none;
+            border-radius: 12px;
+            background-color: green;
+            color: white;
+            font-weight: 600;
+            text-shadow: rgba(0, 0, 0, 0.3);
+            font-size: 16px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        .send-button:disabled {
+            background-color: rgb(119, 138, 119);
+        }
+        .info-text {
+            font-size: 12px;
+            color: gray;
+            margin-bottom: 20px;
+        }
+        .info-text a {
+            color: green;
+            text-decoration: none;
+        }
+        .backbutton{
+            border: 1.1px solid black;
+            border-radius: 10px;
+            padding: 9px;
+            top: 18px;
+            left: 12px;
+            text-align: left;
+            background: none;
+            margin-bottom: 30px;
+            size: 1em;
+        }
+        .backbtnimg{
+            height: 10px;
+            width: 15px;
+            margin: 0px;
+        }
+
+       
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <button class="backbutton" id="back-btn" > <img src="arrowback_111142.png" class="backbtnimg">  Nachricht senden</button>
+        <div class="header">
+            <img src="profilbild.jpg" alt="Profilbild" width="50">
+            <div>
+                <h1>Jenny</h1>
+                <div class="subheader">PC + Zubehör</div>
+            </div>
+        </div>
+        <div class="message-box">
+            <label for="message">Nachricht</label>
+            <textarea id="message" rows="4" placeholder="Schreibe eine freundliche Nachricht..."></textarea>
+        </div>
+        <div class="sender-info">
+            <label for="name">Name*</label>
+            <input type="text" id="name" value="paul">
+        </div>
+        <button class="send-button" id="send-button" disabled>Senden</button>
+        <div class="info-text">
+            Deine Daten (inkl. E-Mail-Adresse) werden dem Anbieter übermittelt und bei zukünftigen Anfragen automatisch vorausgefüllt. <a href="#">Mehr Infos</a>
+        </div>
+        <div class="info-text">
+            Wir überprüfen Nachrichten auf Verstöße gegen unsere <a href="#">Nutzungsbedingungen</a>. Weitere Infos findest du in unserer <a href="#">Datenschutzerklärung</a>.
+        </div>
+    </div>
+
+    <script>
+        const messageInput = document.getElementById('message');
+        const sendButton = document.getElementById('send-button');
+
+        messageInput.addEventListener('input', function() {
+            sendButton.disabled = !messageInput.value.trim();
+        });
+
+        document.getElementById('back-btn').addEventListener('click', function() {
+            // Zeige die Ladeanimation
+           
+
+            // Navigiere zur Index2-Seite nach einer kurzen Verzögerung (hier 0.5 Sekunden)
+            setTimeout(function() {
+                window.location.href = 'final.html';
+            }, 50);
+
+        });
+    </script>
+</body>
+</html>

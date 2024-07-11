@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSL - Kontakt</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0; /* Hellblau */
+            overflow: hidden;
+            flex-direction: column;
+            font-family: sans-serif;
+        }
+
+        header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border-bottom: 1.5px solid rgb(66, 66, 66);
+            position: fixed;
+            top: 0;
+            background-color: #f0f0f0;
+        }
+
+        @media (max-width: 600px) {
+            
+            header{
+                max-width: 500px;
+            }
+        }
+
+        h5 {
+            font-family: sans-serif;
+            text-align: right;
+            margin: 10px;
+            font-size: 1.5rem;
+            text-decoration: underline;
+            margin-right: 23px;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            margin-top: 100px; /* Platz für den Header */
+            padding: 20px;
+            width: 100%;
+        }
+
+        .contact-info {
+            
+            margin-top: 70px;
+            font-size: 1.2rem;
+            margin-bottom: 29px;
+            font-family: sans-serif;
+        }
+
+        .btn-contact {
+            padding: 10px 20px;
+            background-color: #0e0e0e; /* Dunkelblau */
+            color: white;
+            font-size: 1rem;
+            text-decoration: none;
+            margin-top: 29px;
+            border-radius: 22px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-contact:hover {
+            background-color: rgb(42, 172, 215); /* Hellere Variante von Dunkelblau */
+        }
+
+        .close-btn {
+            font-size: 38px;
+            margin-left:23px;
+            color: black;
+            cursor: pointer;
+        }
+
+        .footer {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            background-color: #e5e4e4; /* Dunkelblau */
+            color: rgb(6, 6, 6);
+            text-align: center;
+            padding: 10px 0;
+            font-family: sans-serif;
+        }
+
+        .footertxt {
+            margin-bottom: 8px;
+        }
+
+        .footer a {
+            
+            color: rgb(8, 21, 156);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Blaue Bläschen */
+        .bubble {
+            position: absolute;
+            background-color: rgba(63, 189, 231, 0.5); /* Halbtransparentes Blau */
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-50px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="xbtn" class="close-btn" onclick="window.location.href='index.html'">&times;</div>
+       
+        <h5> <u>OSL</u> </h5>
+    </header>
+
+    <div class="container">
+        <div class="contact-info">
+            <p> <strong>OSL GmbH</strong> </p>
+           
+            <p> <strong> 80336 München </strong></p>
+            <p> <strong>  Telefon: 0152 / 04483560  </strong> </p>
+            <p> <strong> Email: osl.service@gmail.com </strong> </p>
+        </div>
+        <a href="mailto:osl.serviece@gmail.com" class="btn-contact">Kontaktieren</a>
+    </div>
+
+    <!-- Blaue Bläschen -->
+    <div class="bubble" style="top: 13%; left: 10%;"></div>
+    <div class="bubble" style="top: 15%; left: 70%;"></div>
+    <div class="bubble" style="top: 20%; left: 30%;"></div>
+    <div class="bubble" style="top: 67%; left: 80%;"></div>
+    <div class="bubble" style="top: 71%; left: 20%;"></div>
+
+    <div class="footer">
+        <div class="footertxt">2024 OSL. Alle Rechte vorbehalten</div>
+        <a class="footera"  href="#"> <u> Impressum </u> </a>
+        <a class="footera" href="#"> <U> Datenschutz </U> </a>
+        <a class="footera"  href="#"> <U> Kontakt  </U> </a>
+    </div>
+</body>
+</html>

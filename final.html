@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            text-align: center;
+            max-width: 870px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+           
+        }
+        .header {
+            display: flex;
+           
+            height: 50px;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header img {
+            border-radius: 50%;
+            margin-right: 15px;
+            margin: 10px;
+        }
+        .header h1 {
+            font-size: 24px;
+            margin: 10px;
+            margin: 0;
+            font-family: sans-serif;
+        }
+        .header .subheader {
+            font-size: 14px;
+            color: gray;
+        }
+        .profile-info {
+            text-align: center;
+
+            
+            margin-bottom: 20px;
+        }
+        .profile-info img {
+            border-radius: 50%;
+            margin-top: 20px;
+            margin-right: 15px;
+        }
+        .profile-info h1 {
+            text-align: center;
+            font-size: 24px;
+            margin: 10px;
+        }
+        .profile-info .subheader {
+            text-align: center;
+            font-size: 17px;
+            flex-direction: row;
+
+            font-weight: 520;
+            margin: 19px;
+            color: rgb(11, 11, 11);
+        }
+        .description {
+            margin-bottom: 20px;
+            margin-top: 30px;
+            border: 1px solid black;
+            border-radius: 12px;
+            background: none;
+            padding: 16px;
+            font-size: smaller;
+        }
+        .description p {
+            margin: 8px;
+            font-size: 16px;
+        }
+        .send-button {
+            width: 80%;
+            margin-left: 55px;
+            margin-right: 55px;
+            padding: 15px;
+            padding-left: 14px;
+            padding-right: 14px;
+            border: none;
+            border-radius: 8px;
+            background-color: #213d6df3;
+            color: white;
+            text-shadow: rgba(0, 0, 0, 0.5);
+            font-size: 17px;
+            margin-bottom: 28px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .send-button:hover {
+           transform: scale(1);
+        
+        }
+        .send-button:active{
+            animation: clickAnimation 0.2s ease;
+        }
+
+        @keyframes clickAnimation {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+
+        .info {
+            font-size: 14px;
+            color: gray;
+            margin-bottom: 10px;
+        }
+        .info p {
+            margin: 0;
+        }
+        .info a {
+            color: green;
+            text-decoration: none;
+        }
+        .back-btn {
+            font-size: 24px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .menu {
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .menu-line {
+            margin: 10px;
+            margin-right: 10px;
+            width: 25px;
+            height: 3px;
+            background-color: #0e0e0e;
+            margin: 4px 0;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .menu-line:hover {
+            background-color: #1c8cd7;
+        }
+
+        .overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+            z-index: 1000; /* Below side menu but above other content */
+        }
+
+        .overlay.active {
+            display: block; /* Show overlay when active */
+        }
+
+        .side-menu {
+            border-radius: 10px;
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            right: 0;
+            background-color: white;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 80px;
+            z-index: 10000;
+        }
+        .menuBtn {
+            padding: 10px 10px;
+            text-decoration: none;
+            margin-bottom: 16px;
+            border: none;
+            margin-right: 28px;
+            margin-left: 10px;
+            font-size: 1.2rem;
+            border-bottom: 1.2px solid rgb(163, 163, 163);
+            color: black;
+            display: block;
+            transition: 0.3s;
+            font-family: sans-serif;
+        }
+        .side-menu a:hover {
+            background-color: #1c8cd7;
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+            color: black;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="back-btn" id="back-btn" >&larr;</span>
+            <h1>Profil</h1>
+            <div class="menu" id="menu">
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+            </div>
+        </div>
+        <div class="profile-info">
+            <img src="profilbild.jpg" alt="Profilbild" width="50">
+            <div>
+                <h1>@achi1m</h1>
+                <div class="subheader">
+                    <img src="socialmediaicon.png" alt="Social Media" width="20"> Instagram
+                    <br>
+                    <img src="followericon.png" alt="Follower" width="20"> 1532 Follower
+                </div>
+            </div>
+        </div>
+        <div class="description">
+            <p> <strong>Beschreibung des Benutzers:</strong> </p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis velit officiis itaque esse ex excepturi quam iste pariatur similique! Eius maiores officia voluptatum excepturi? Aliquam qui fugiat maiores quos possimus.</p>
+        </div>
+        <button class="send-button" id="send-button" >Nachricht Senden</button>
+        <div class="info">
+            <p>Email: <a href="mailto:email@example.com">email@example.com</a></p>
+            <p>Telefon: <a href="tel:+123456789">+123456789</a></p>
+        </div>
+        <div class="info">
+            <p><a href="#">AGBs</a></p>
+        </div>
+   
+
+    <div class="overlay" id="overlay"></div>
+    </div>
+    <div id="sideMenu" class="side-menu">
+        <span class="close-btn" id="closeBtn">&times;</span>
+        <a class="menuBtn" href="#" data-target="acc.html"><strong>Account</strong></a>
+        <a class="menuBtn" href="#" data-target="about.html"><strong>Über uns</strong></a>
+        <a class="menuBtn" href="#" data-target="services.html"><strong>Was wir machen</strong></a>
+        <a class="menuBtn" href="#" data-target="contact.html"><strong>Kontakt</strong></a>
+        <a class="menuBtn" href="#" data-target="index.html"><strong>Loslegen</strong></a>
+    </div>
+
+    <script>
+        document.getElementById('menu').addEventListener('click', function() {
+            document.getElementById('sideMenu').style.width = '250px';
+            document.getElementById('overlay').classList.add('active');
+        });
+
+        document.getElementById('overlay').addEventListener('click', function() {
+            document.getElementById('sideMenu').style.width = '0';
+            document.getElementById('overlay').classList.remove('active');
+        });
+
+        document.getElementById('closeBtn').addEventListener('click', function() {
+            document.getElementById('sideMenu').style.width = '0';
+            document.getElementById('overlay').classList.remove('active');
+        });
+
+        document.querySelectorAll('.menuBtn').forEach(function(btn) {
+            btn.addEventListener('click', function(event) {
+                event.preventDefault();
+                var target = this.getAttribute('data-target');
+                document.getElementById('sideMenu').style.width = '0';
+                document.getElementById('overlay').classList.remove('active');
+                setTimeout(function() {
+                    window.location.href = target;
+                }, 300);
+            });
+        });
+        document.getElementById('send-button').addEventListener('click', function() {
+            // Zeige die Ladeanimation
+           
+
+            // Navigiere zur Index2-Seite nach einer kurzen Verzögerung (hier 0.5 Sekunden)
+            setTimeout(function() {
+                window.location.href = 'final-send.html';
+            }, 150);
+
+        });
+        document.getElementById('back-btn').addEventListener('click', function() {
+            // Zeige die Ladeanimation
+           
+
+            // Navigiere zur Index2-Seite nach einer kurzen Verzögerung (hier 0.5 Sekunden)
+            setTimeout(function() {
+                window.location.href = 'profil.html';
+            }, 50);
+
+        });
+    </script>
+</body>
+</html>

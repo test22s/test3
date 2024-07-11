@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSL - Startseite</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0; /* Hellblau */
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        header {
+           
+            border-bottom: 2px solid #000000;
+        
+        }
+        
+
+        .container {
+            text-align: center;
+            position: relative;
+            margin-top: 145px;
+        }
+
+        h5 {
+            font-family: sans-serif;
+            text-align: left;
+            margin: 10px;
+            position: absolute;
+            top: 16.4px;
+            left: 20px;
+            font-size: 1.6rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #0e0e0e; /* Dunkelblau */
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .btn-start {
+            
+            padding: 10px 20px;
+            background-color: #0e0e0e; /* Dunkelblau */
+            
+            color: white;
+            font-size: 1.36rem;
+            text-decoration: none;
+            border-radius: 22px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 30px;
+            
+        }
+
+        .btn-start:hover {
+            background: linear-gradient(-229deg, #6784c7,  #31589bf3 ); /* Hellere Variante von Dunkelblau */
+        }
+
+        .btn-start:active {
+            animation: clickAnimation 0.5s ease;
+        }
+
+        @keyframes clickAnimation {
+            0% {
+                transform: scale(1.2);
+            }
+            50% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.2);
+            }
+        }
+
+        /* Ladeanimation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loading-circle {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 4px solid #0e0e0e; /* Dunkelblau */
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Blaue Bläschen */
+        .bubble {
+            position: absolute;
+            background: linear-gradient(-229deg, #3097c3,  #31589bf3 );/* Halbtransparentes Blau */
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-50px);
+            }
+        }
+
+        /* Menü */
+        .menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            top: 25px;
+        }
+
+           /* Overlay for dimming background */
+           .overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+            z-index: 1000; /* Below side menu but above other content */
+        }
+
+        .overlay.active {
+            display: block; /* Show overlay when active */
+        }
+
+        .menu-line {
+            width: 25px;
+            height: 3px;
+            background-color: #0e0e0e; /* Dunkelblau */
+            margin: 4px 0;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            
+        }
+
+        .menu-line:hover {
+            background-color: #1c8cd7; /* Hellere Variante von Dunkelblau */
+        }
+
+        /* Werbebereich */
+        .ad-container {
+            position: absolute;
+            bottom: 11px;
+            width: 90%;
+            height: 100px; /* Höhe des Werbebereichs */
+            background-color: #ccc; /* Hellgrau als Platzhalter für Werbung */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 0px; /* Abstände zum Rand */
+            border-radius: 10px;
+        }
+
+        .txt{
+            font-size: 16px;
+            margin-top: 24px;
+            text-align: center;
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <header>
+    <h5> <u>OSL</u> </h5>
+    <div class="menu" id="menu">
+        <div class="menu-line">  </div>
+        <div class="menu-line">  </div>
+        <div class="menu-line">  </div>
+    </div>
+    </header>
+    <div class="container"></div>
+        <h1>Ihr Bindeglied zwischen Influencer und Unternehmen</h1>
+        <a href="#" class="btn-start" id="startBtn">Starten</a>
+        
+        
+
+        <!-- Blaue Bläschen -->
+        <div class="bubble" style="top: 13%; left: 10%;"></div>
+        <div class="bubble" style="top: 15%; left: 70%;"></div>
+        <div class="bubble" style="top: 20%; left: 30%;"></div>
+        <div class="bubble" style="top: 67%; left: 80%;"></div>
+        <div class="bubble" style="top: 71%; left: 20%;"></div>
+</div>
+        <!-- Menü -->
+    
+   
+
+
+    <!-- Werbebereich -->
+    <div class="ad-container">
+        <span>Werbung</span>
+    </div>
+
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-circle"></div>
+        <div class="loading-circle"></div>
+        <div class="loading-circle"></div>
+    </div>
+
+    <script>
+        document.getElementById('startBtn').addEventListener('click', function() {
+            // Zeige die Ladeanimation
+            document.getElementById('loadingOverlay').style.display = 'flex';
+
+            // Navigiere zur Index2-Seite nach einer kurzen Verzögerung (hier 0.5 Sekunden)
+            setTimeout(function() {
+                window.location.href = 'index2.html';
+            }, 500);
+
+        });
+
+        </script>
+
+
+
+
+
+
+<style>
+   .menu {
+            cursor: pointer;
+        }
+
+        .menu-line {
+            width: 25px;
+            height: 3px;
+            background-color: #0e0e0e; /* Dunkelblau */
+            margin: 4px 0;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-line:hover {
+            background-color: #1c8cd7; /* Hellere Variante von Dunkelblau */
+        }
+
+        /* Side-Menü */
+        .side-menu {
+            border-radius: 10px;
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            right: 0;
+            background-color: white; /* Dunkelblau */
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 80px;
+            z-index: 10000;
+        }
+
+        .menuBtn {
+            padding: 10px 10px;
+            text-decoration: none;
+            margin-bottom: 12px;
+            border: 1px solid rgb(234, 232, 232);
+            border-radius: 9px;
+            background-color: rgb(234, 232, 232);
+            margin-right: 28px;
+            margin-left: 10px;
+            font-size: 1.2rem;
+            
+            color: black;
+            display: block;
+            transition: 0.3s;
+            font-family: sans-serif;
+        }
+
+        .side-menu a:hover {
+            background-color: #6e71724f; /* Hellere Variante von Dunkelblau */
+        }  
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+            color: black;
+            cursor: pointer;
+        }
+ .menu-icon{
+    
+    height: 19px;
+    width: 19px;
+}
+
+.accicon{
+   width: 30px;
+   height: 23px;
+}
+      
+</style>
+
+<div class="overlay" id="overlay"></div> <!-- Overlay element -->
+
+ <!-- Side-Menü -->
+ <div id="sideMenu" class="side-menu">
+
+ 
+
+    <span class="close-btn" id="closeBtn">&times;</span>
+    <a class="menuBtn" href="#" data-target="acc.html"><strong><img class="menu-icon"  src="" class="accicon">  Account </strong></a>
+    <a class="menuBtn" href="#" data-target="about.html"> <strong>  <img class="menu-icon" src="checkmark-icon.jpg" id="checkmark-icon"> Über uns  </strong> </a>
+    <a class="menuBtn" href="#" data-target="contact.html"> <strong> <img class="menu-icon" src="" id="con-icon">  Kontakt </strong> </a>
+    <a class="menuBtn" href="#" data-target="index.html"> <strong> <img class="menu-icon" src="" id="start-icon">  Loslegen </strong> </a>
+
+    <a class="menuBtn" href="#" data-target="services.html"> <strong> Was wir machen </strong></a>
+</div>
+        <script>
+
+        document.getElementById('menu').addEventListener('click', function() {
+            document.getElementById('sideMenu').style.width = '250px';
+            overlay.classList.toggle('active');
+        });
+
+        overlay.addEventListener('click', function() {
+                sideMenu.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+
+        closeBtn.addEventListener('click', function() {
+            document.getElementById('sideMenu').style.width = '0';
+                overlay.classList.remove('active');
+            });
+
+
+        // Event-Listener für die Links im Side-Menü
+        document.querySelectorAll('.menuBtn').forEach(function(btn) {
+            btn.addEventListener('click', function(event) {
+                event.preventDefault(); // Verhindert das Standard-Verhalten des Links
+                var target = this.getAttribute('data-target');
+                
+                // Einfahren des Side-Menüs
+                document.getElementById('sideMenu').style.width = '0';
+                
+                // Zeige die Ladeanimation
+                document.getElementById('loadingOverlay').style.display = 'flex';
+                
+                // Navigiere zur Zielseite nach einer kurzen Verzögerung (hier 0.5 Sekunden)
+                setTimeout(function() {
+                    window.location.href = target;
+                }, 300);
+            });
+         });
+
+
+
+
+
+
+
+    </script>
+   
+</body>
+</html>
+
+
+
+
+
+
+
+
+

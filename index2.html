@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressive Animation</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: white;
+            overflow: hidden;
+        }
+
+        .message {
+            position: absolute;
+            top: 36px;
+            font-size: 6vw; /* Responsive font size */
+            color: black;
+            text-align: center;
+            width: 100%;
+        }
+
+        h2 {
+            position: absolute;
+            top: 176px;
+            font-size: 26px;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 4vw; /* Responsive button size */
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+        }
+
+        .btn-left {
+            background-color: #213d6df3;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 18.5px;
+            font-weight: 600;
+        }
+
+        .btn-right {
+            background-color: white;
+            color: black;
+            border: 1.4px solid black;
+            border-radius: 20px;
+            font-size: 17px;
+            size: 1.3em;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .btn:active {
+            animation: clickAnimation 0.2s ease;
+        }
+
+        @keyframes clickAnimation {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(0.95);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.3s ease;
+            pointer-events: none;
+        }
+
+        .btn:hover::before {
+            transform: translate(-50%, -50%) scale(1.5);
+        }
+
+        .animation-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:#213d6df3 ;
+            clip-path: circle(0% at 50% 50%);
+            transition: clip-path 0.6s ease-in-out; /* Faster transition */
+            z-index: 10;
+        }
+
+        .animation-overlay.active {
+            clip-path: circle(150% at 50% 50%);
+        }
+
+        .bubbles {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .bubble {
+            fill: #213d6df3;
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-20px);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 0.6;
+            }
+        }
+
+        .circle {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            background-color: rgb(253, 254, 254);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            display: none;
+            z-index: 2;
+        }
+
+        .loading-animation {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            z-index: 11; /* Ensure it's above the overlay */
+        }
+
+        .loading-animation .dot {
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            animation: loading 1s infinite;
+        }
+
+        .loading-animation .dot:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .loading-animation .dot:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .loading-animation .dot:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        @keyframes loading {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+        }
+
+        @keyframes expandCircle {
+            0% {
+                width: 100px;
+                height: 100px;
+                bottom: -50px;
+                transform: translateX(-50%);
+            }
+            50% {
+                width: 500px;
+                height: 500px;
+                bottom: calc(50% - 250px);
+                transform: translateX(-50%);
+            }
+            100% {
+                width: 3000px;
+                height: 3000px;
+                bottom: calc(50% - 1500px);
+                transform: translateX(-50%);
+            }
+        }
+
+        .fade-out {
+            animation: fadeOut 1s forwards;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* Ladeanimation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loading-circle {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 4px solid #0e0e0e; /* Dunkelblau */
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="message"> <strong> <u> OSL </u> </strong> </div>
+    <div class="container">
+        <h2> Was trifft auf sie zu ? </h2>
+        <button class="btn btn-left" onclick="triggerAnimation('newpage.html')"> <strong> Influencer </strong> </button>
+        <button class="btn btn-right" onclick="triggerAnimation('unternehmen1.html')"> <strong> Unternehmen </strong> </button>
+    </div>
+    <div class="animation-overlay" id="animationOverlay"></div>
+  
+    <svg class="bubbles" xmlns="http://www.w3.org/2000/svg">
+        <circle class="bubble" cx="10%" cy="90%" r="20" />
+        <circle class="bubble" cx="25%" cy="85%" r="15" />
+        <circle class="bubble" cx="40%" cy="92%" r="10" />
+        <circle class="bubble" cx="55%" cy="88%" r="25" />
+        <circle class="bubble" cx="70%" cy="95%" r="18" />
+        <circle class="bubble" cx="85%" cy="90%" r="12" />
+    </svg>
+
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-circle"></div>
+        <div class="loading-circle"></div>
+        <div class="loading-circle"></div>
+    </div>
+
+    <div class="loading-animation" id="loadingAnimation">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+
+    <script>
+        function triggerAnimation(targetUrl) {
+            const overlay = document.getElementById('animationOverlay');
+            const loadingAnimation = document.getElementById('loadingAnimation');
+
+            overlay.classList.add('active');
+            loadingAnimation.style.display = 'flex';
+
+            setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 500);  // Wait for 0.5 seconds to let the animation play before redirecting
+        }
+
+        document.getElementById('btn-left').addEventListener('click', function() {
+            if (!this.disabled) {
+                const content = document.getElementById('content');
+                const circle = document.getElementById('circle');
+                content.classList.add('fade-out');
+                circle.style.display = 'block';
+                circle.style.animation = 'expandCircle 1s forwards';
+                circle.addEventListener('animationend', function() {
+                    window.location.href = 'newpage.html';
+                });
+            }
+        });
+
+        document.getElementById('btn-right').addEventListener('click', function() {
+            if (!this.disabled) {
+                const content = document.getElementById('content');
+                const circle = document.getElementById('circle');
+                content.classList.add('fade-out');
+                circle.style.display = 'block';
+                circle.style.animation = 'expandCircle 1s forwards';
+                circle.addEventListener('animationend', function() {
+                    window.location.href = 'unternehmen1.html';
+                });
+            }
+        });
+
+        document.getElementById('btn').addEventListener('click', function() {
+            // Zeige die Ladeanimation
+            document.getElementById('loadingOverlay').style.display = 'flex';
+
+            // Navigiere zur Index2-Seite nach einer kurzen Verzögerung (hier 0.5 Sekunden)
+            setTimeout(function() {
+                window.location.href = targetUrl;
+            }, 500);
+        });
+    </script>
+</body>
+</html>

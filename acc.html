@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .login-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            height: 560px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        .txt {
+            margin-top: 58px;
+        }
+
+        .login-card h2 {
+            margin-bottom: 20px;
+        }
+
+        .login-card input[type="text"], .login-card input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .rgbn {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            background-color: #333;
+            color: white;
+            border-radius: 16px;
+            cursor: pointer;
+        }
+
+        .login-card .horizontal-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .horizontal-line::before,
+        .horizontal-line::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #000;
+        }
+
+        .horizontal-line::before {
+            margin-right: 10px;
+        }
+
+        .horizontal-line::after {
+            margin-left: 10px;
+        }
+
+        .login-card .social-login {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .social-login button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        
+
+     
+
+        .login-card .back-button {
+            position: absolute;
+            top: 10px;
+            left: 18px;
+            font-size: 12px;
+            color: #000000;
+            cursor: pointer;
+            border-radius: 14px;
+            background-color: #ffffff;
+            border: 1.2px solid black;
+            padding: 8px;
+        }
+
+        /* Ladeanimation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #333;
+            z-index: 1000;
+        }
+
+        .dots {
+            display: inline-block;
+            width: 80px;
+            text-align: center;
+        }
+
+        .dots span {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin: 0 3px;
+            background: #333;
+            border-radius: 50%;
+            animation: dots 1.4s infinite ease-in-out both;
+        }
+
+        .dots span:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        .dots span:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+
+        @keyframes dots {
+            0%, 80%, 100% {
+                transform: scale(0);
+            }
+            40% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <button class="back-button" id="back-button">Zurück</button>
+        <div class="txt">
+            <h2>Registrieren</h2>
+            <input type="text" placeholder="Benutzername">
+            <input type="password" placeholder="Passwort">
+            <button class="rgbn">Registrieren</button>
+            <div class="horizontal-line">oder</div>
+            <div class="social-login">
+                <button>
+                    <span>Mit Google anmelden</span>
+                    <span class="icon icon-google"></span>
+                </button>
+                <button>
+                    <span>Mit Facebook anmelden</span>
+                    <span class="icon icon-facebook"></span>
+                </button>
+                <button>
+                    <span>Mit X anmelden</span>
+                    <span class="icon icon-x"></span>
+                </button>
+            </div>
+            <a href="#" class="register-link" id="register-link"><u>Login</u></a>
+        </div>
+    </div>
+
+    <div class="loading" id="loading" style="display: none;">
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('back-button').addEventListener('click', function() {
+            showLoading();
+            setTimeout(function() {
+                window.location.href = 'index.html';
+            }, 500); // Zeit für die Animation in Millisekunden
+        });
+
+        document.getElementById('register-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            showLoading();
+            setTimeout(function() {
+                window.location.href = 'account.html';
+            }, 700); // Zeit für die Animation in Millisekunden
+        });
+
+        function showLoading() {
+            document.getElementById('loading').style.display = 'flex';
+        }
+    </script>
+    <style>
+
+        .login-card .register-link {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #1c0698;
+            text-align: center;
+        }
+
+        .icon {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .icon-google {
+            background-image: url('google.png');
+            font-size: 28px;
+        }
+
+        .icon-facebook {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg');
+        }
+
+        .icon-x {
+            background-image: url('x.png');
+            height: 28px;
+            width: 28px;
+        }
+
+</style>
+</body>
+</html>

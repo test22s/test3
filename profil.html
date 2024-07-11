@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kreative Seite</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        header {
+            display: flex;
+            font-family: sans-serif;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #ffffff;
+            border-bottom: 2.5px solid rgb(161, 159, 159);
+        }
+
+        h1 {
+            font-size: 22px;
+        }
+
+        .menu-icon {
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        .menu-icon:hover {
+            border-radius: 20%;
+            background-color: rgba(95, 95, 95, 0.144);
+            
+        }
+
+        .menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 58px;
+            height: 450px;
+            width: 150px;
+            background-color: white;
+            border-radius: 5px;
+            border: 1px solid grey;
+            padding: 10px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #000000;
+            padding: 9px;
+            margin-bottom: 12px;
+            border: 1px solid rgb(234, 232, 232);
+            border-radius: 9px;
+            margin: 10px;
+            background-color: rgb(234, 232, 232);
+           
+        }
+
+        .menu a:hover {
+            background-color: rgba(151, 149, 149, 0.46);
+            
+            
+        }
+
+      
+
+        .menu a:last-child {
+            border-bottom: none;
+        }
+
+        .title {
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1.5em;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .filter {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 735px) {
+            .filter{
+                max-width: 500px;
+                text-align: center;
+            }
+            .filterbtn {
+                display: flex;
+               
+                font-size: smaller;
+            }
+            .filter select{
+                border: 1.7px black;
+                size: 1em;
+            }
+        }
+
+        .filterbtn {
+            border: 0.1px solid green;
+            border-radius: 6px;
+            color: white;
+            background-color: green;
+        }
+
+        .filterbtn:hover {
+            background-color: rgb(2, 110, 2);
+        }
+
+        .filter select {
+            padding: 5px;
+            background-color: white;
+            
+            border-radius: 6px;
+            font-size: 1em;
+        }
+
+        .filter option{
+            margin-top: 4px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .profile-card {
+            display: flex;
+            align-items: center;
+            width: 90%;
+            max-width: 600px;
+            height: 130px;
+            border: 2px solid #3aaae7f3;
+            border-radius: 10px;
+            padding: 10px;
+            background-color: #f0f8ff;
+        }
+
+        .profile-card img {
+            width: 43px;
+            height: 43px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .profile-info div {
+            font-size: 0.9em;
+        }
+
+        .ad-space {
+            width: 90%;
+            max-width: 600px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px dashed #000000;
+            color: #000000;
+            background-color: #ffffff;
+            font-size: 1em;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        h5 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 30px;
+        }
+
+        .date {
+            font-size: 2px;
+            color: gray;
+        }
+
+        .no-results {
+            display: none;
+            font-size: 1.5em;
+            color: black;
+            text-align: center;
+            margin-top: 85px;
+        }
+        .no-results2{
+            text-align: center;
+            font-size: 1.1em;
+            color: rgb(95, 95, 95);
+            margin-top: 8px;
+        }
+
+    
+    </style>
+</head>
+<body>
+    <header>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <h1><u>OSL</u></h1>
+    </header>
+    <div class="menu" id="menu">
+        
+        <a href="index.html"> <strong>  Startseite </strong></a>
+        <a href="acc.html"> <strong> Account </strong> </a>
+        <a href="hilfe.html"><strong> Hilfe  </strong></a>
+        <a href="contact.html"> <strong>Kontakt </strong> </a>
+       
+
+    </div>
+    <div class="title"><strong>Aktuelle Gebote von Unternehmen an Influencer:</strong></div>
+
+    <div class="filter">
+        <select id="themenbereich-filter">
+            <option value="">Themenbereich</option>
+            <option value="Fitness">Fitness</option>
+            <option value="Mode">Mode</option>
+            <option value="Technik">Technik</option>
+            <option value="Essen">Essen</option>
+            <option value="Dienstleistung">Dienstleistung</option>
+        </select>
+        <select id="follower-filter">
+            <option value="0">Min. Follower</option>
+            <option value="1000">1k</option>
+            <option value="3000">3k</option>
+            <option value="5000">5k</option>
+            <option value="10000">10k</option>
+            <option value="20000">20k+</option>
+        </select>
+        <select id="preis-filter">
+            <option value="1000">Max. Preis</option>
+            <option value="20"> 20€</option>
+            <option value="30"> 30€</option>
+            <option value="50"> 50€</option>
+            <option value="80"> 80€</option>
+            <option value="100">100€+</option>
+        </select>
+        <button class="filterbtn" onclick="applyFilters()"><strong>Filter anwenden</strong></button>
+    </div>
+
+    <div class="container">
+
+        <div id="profilcard" class="profile-card" data-themenbereich="Fitness" data-follower="5800" data-preis="35">
+            <img src="440113333_827187646121032_6550800338063912665_n.jpg" alt="Profilbild">
+            <div class="profile-info">
+                <div>Name: @boxflexbag</div>
+                <div>Follower: 5,8k</div>
+                <div>Produkt: Box Setup für Zuhause</div>
+                <div>Bietender Preis für 1 Beitrag: 35€</div>
+                <div class="date">vor 36min</div>
+            </div>
+        </div>
+        
+        <div class="ad-space" data-themenbereich="Fitness" data-follower="5800" data-preis="35" >Werbung</div>
+
+        <div id="profilcard" class="profile-card" data-themenbereich="Fitness" data-follower="2100" data-preis="20">
+            <img src="320606546_689243052923884_3470896746806061367_n.jpg" alt="Profilbild">
+            <div class="profile-info">
+                <div>Name: @bc_social_mm_gym</div>
+                <div>Follower: 2,1k</div>
+                <div>Themenbereich: Fitness T-Shirt</div>
+                <div>Bietender Preis für 20 Sek. Story: 20€</div>
+                <div class="date">vor 4h</div>
+            </div>
+        </div>
+        <div class="ad-space" data-themenbereich="Fitness" data-follower="2100" data-preis="20" >Werbung</div>
+
+        <div class="profile-card" data-themenbereich="Mode" data-follower="1800" data-preis="48">
+            <img src="https://via.placeholder.com/80" alt="Profilbild">
+            <div class="profile-info">
+                <div>Name: @achi1m</div>
+                <div>Follower: 1,8k</div>
+                <div>Produkt: Cotton T-Shirt</div>
+                <div>Bietender Preis für 30 Sek. Story + Beitrag: 48€</div>
+                <div class="date">vor 1 Tag</div>
+            </div>
+        </div>
+        <div class="ad-space" data-themenbereich="Mode" data-follower="1800" data-preis="48" >Werbung</div>
+
+        <div class="profile-card" data-themenbereich="Fitness" data-follower="8300" data-preis="20">
+            <img src="444746796_442903651655068_5228387856703507780_n.jpg" alt="Profilbild">
+            <div class="profile-info">
+                <div>Name: @club.1899</div>
+                <div>Follower: 8,3k</div>
+                <div>Themenbereich: Fitness T-Shirt</div>
+                <div>Bietender Preis für 20 Sek. Story: 20€</div>
+                <div class="date">vor 1 Tag</div>
+            </div>
+        </div>
+        <div class="ad-space" data-themenbereich="Fitness" data-follower="8300" data-preis="20" >Werbung</div>
+
+        <div class="profile-card" data-themenbereich="Technik" data-follower="420" data-preis="29">
+            <img src="440760400_412909264848312_2032094664745354152_n.jpg" alt="Profilbild">
+            <div class="profile-info">
+                <div>Name: @_luxedriveco</div>
+                <div>Follower: 420</div>
+                <div>Themenbereich: Auto digital Tacho</div>
+                <div>Bietender Preis für 1min Story: 29€</div>
+                <div class="date">vor 2 Tagen</div>
+            </div>
+        </div>  
+        <div class="ad-space" data-themenbereich="Technik" data-follower="420" data-preis="29" >Werbung</div>
+
+        <div class="profile-card" data-themenbereich="Technik" data-follower="800" data-preis="25" >
+            <img src="https://via.placeholder.com/80" alt="Profilbild">
+            <div class="profile-info">
+                <div>Name: @autofanatic</div>
+                <div>Follower: 800</div>
+                <div>Themenbereich: Auto digital Tacho</div>
+                <div>Bietender Preis für 1min Story: 25€</div>
+                <div class="date">vor 2 Tagen</div>
+            </div>
+        </div>
+        <div class="ad-space" data-themenbereich="Technik" data-follower="800" data-preis="25" >Werbung</div>
+
+
+        <div class="profile-card" data-themenbereich="Fitness" data-follower="3500" data-preis="40">
+            <img src="https://via.placeholder.com/80" alt="Profilbild">
+            <div class="profile-info">
+                <div>Name: @fitlife</div>
+                <div>Follower: 3,5k</div>
+                <div>Themenbereich: Fitness T-Shirt</div>
+                <div>Bietender Preis für 30 Sek. Story: 40€</div>
+                <div class="date">vor 3 Tagen</div>
+            </div>
+        </div>
+        <div class="ad-space" data-themenbereich="Fitness" data-follower="3500" data-preis="40" >Werbung</div>
+    </div>
+
+    <div class="no-results" id="no-results"> <strong> Nothing Found...<br><div class="no-results2">Please try again...</div></strong></div>
+         
+
+    <script>
+
+document.getElementById('profilcard').addEventListener('click', function() {
+            // Zeige die Ladeanimation
+           
+
+            // Navigiere zur Index2-Seite nach einer kurzen Verzögerung (hier 0.5 Sekunden)
+            setTimeout(function() {
+                window.location.href = 'final.html';
+            }, 200);
+        });
+
+
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            if (menu.style.display === 'flex') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'flex';
+            }
+        }
+
+        function applyFilters() {
+            setTimeout(function() {
+                var themenbereich = document.getElementById('themenbereich-filter').value.toLowerCase();
+                var follower = parseInt(document.getElementById('follower-filter').value);
+                var preis = parseInt(document.getElementById('preis-filter').value);
+
+                var cards = document.querySelectorAll('.profile-card');
+                var adSpaces = document.querySelectorAll('.ad-space');
+                var noResults = document.getElementById('no-results');
+                var adIndex = 0;
+                var cardsVisible = false;
+
+                cards.forEach(function(card, index) {
+                    var cardThemenbereich = card.getAttribute('data-themenbereich').toLowerCase();
+                    var cardFollower = parseInt(card.getAttribute('data-follower'));
+                    var cardPreis = parseInt(card.getAttribute('data-preis'));
+
+                    var showCard = true;
+
+                    if (themenbereich && cardThemenbereich !== themenbereich) {
+                        showCard = false;
+                    }
+
+                    if (follower && cardFollower < follower) {
+                        showCard = false;
+                    }
+
+                    if (preis && cardPreis > preis) {
+                        showCard = false;
+                    }
+
+                    if (showCard) {
+                        card.style.display = 'flex';
+                        adSpaces[adIndex].style.display = 'flex';
+                        adIndex++;
+                        cardsVisible = true;
+                    } else {
+                        card.style.display = 'none';
+                        adSpaces[index].style.display = 'none';
+                    }
+                });
+
+                if (cardsVisible) {
+                    noResults.style.display = 'none';
+                } else {
+                    noResults.style.display = 'block';
+                }
+            }, 50);
+        }
+    </script>
+</body>
+</html> 

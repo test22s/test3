@@ -1,0 +1,175 @@
+    <header>
+        <h5> <u>OSL</u> </h5>
+        <div class="menu" id="menu">
+            <div class="menu-line"></div>
+            <div class="menu-line"></div>
+            <div class="menu-line"></div>
+        </div>
+        </header>
+        
+    <div id="sideMenu" class="side-menu">
+    
+     
+    
+        <span class="close-btn" id="closeBtn">&times;</span>
+        <a class="menuBtn" href="#" data-target="acc.html"><strong>Account</strong></a>
+        <a class="menuBtn" href="#" data-target="about.html"> <strong> Über uns </strong> </a>
+        <a class="menuBtn" href="#" data-target="services.html"> <strong> Was wir machen </strong></a>
+        <a class="menuBtn" href="#" data-target="contact.html"> <strong> Kontakt </strong> </a>
+        <a class="menuBtn" href="#" data-target="index.html"> <strong>Loslegen </strong> </a>
+    
+    </div>
+    
+    
+    <style>
+
+
+
+header {
+           
+           border-bottom: 2px solid #000000;
+       
+       }
+
+      
+       h5 {
+            font-family: sans-serif;
+            text-align: left;
+            margin: 10px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 1.6rem;
+        } 
+
+        .menu {
+                 cursor: pointer;
+             }
+    
+             
+            /* Menü */
+            .menu {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                display: flex;
+                flex-direction: column;
+                cursor: pointer;
+                top: 25px;
+            }
+    
+            .menu-line {
+                width: 25px;
+                height: 3px;
+                background-color: #0e0e0e; /* Dunkelblau */
+                margin: 4px 0;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+                
+            }
+    
+            .menu-line:hover {
+                background-color: #1c8cd7; /* Hellere Variante von Dunkelblau */
+            }
+    
+     
+             .menu-line {
+                 width: 25px;
+                 height: 3px;
+                 background-color: #0e0e0e; /* Dunkelblau */
+                 margin: 4px 0;
+                 border-radius: 5px;
+                 transition: background-color 0.3s ease;
+             }
+     
+             .menu-line:hover {
+                 background-color: #1c8cd7; /* Hellere Variante von Dunkelblau */
+             }
+     
+             /* Side-Menü */
+             .side-menu {
+                 border-radius: 10px;
+                 height: 100%;
+                 width: 0;
+                 position: fixed;
+                 top: 0;
+                 right: 0;
+                 background-color: white; /* Dunkelblau */
+                 overflow-x: hidden;
+                 transition: 0.5s;
+                 padding-top: 80px;
+                 z-index: 10000;
+             }
+     
+             .menuBtn {
+                 padding: 10px 10px;
+                 text-decoration: none;
+                 margin-bottom: 16px;
+                 border: none;
+                 margin-right: 28px;
+                 margin-left: 10px;
+                 font-size: 1.43rem;
+                 border-bottom: 1.2px solid rgb(163, 163, 163);
+                 color: black;
+                 display: block;
+                 transition: 0.3s;
+                 font-family: sans-serif;
+             }
+     
+             .side-menu a:hover {
+                 background-color: #1c8cd7; /* Hellere Variante von Dunkelblau */
+             }  
+     
+             .close-btn {
+                 position: absolute;
+                 top: 20px;
+                 right: 25px;
+                 font-size: 36px;
+                 margin-left: 50px;
+                 color: black;
+                 cursor: pointer;
+             }
+     
+           
+     </style>
+    
+    <script>
+    
+        document.getElementById('menu').addEventListener('click', function() {
+            document.getElementById('sideMenu').style.width = '250px';
+            overlay.classList.toggle('active');
+        });
+    
+        overlay.addEventListener('click', function() {
+                sideMenu.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+    
+        closeBtn.addEventListener('click', function() {
+            document.getElementById('sideMenu').style.width = '0';
+                overlay.classList.remove('active');
+            });
+    
+    
+        // Event-Listener für die Links im Side-Menü
+        document.querySelectorAll('.menuBtn').forEach(function(btn) {
+            btn.addEventListener('click', function(event) {
+                event.preventDefault(); // Verhindert das Standard-Verhalten des Links
+                var target = this.getAttribute('data-target');
+                
+                // Einfahren des Side-Menüs
+                document.getElementById('sideMenu').style.width = '0';
+                
+                // Zeige die Ladeanimation
+                document.getElementById('loadingOverlay').style.display = 'flex';
+                
+                // Navigiere zur Zielseite nach einer kurzen Verzögerung (hier 0.5 Sekunden)
+                setTimeout(function() {
+                    window.location.href = target;
+                }, 300);
+            });
+         });
+    
+    
+    
+    </script>
