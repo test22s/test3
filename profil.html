@@ -91,7 +91,9 @@
 
         @media (max-width: 735px) {
             .filter{
-                max-width: 500px;
+                font-size: smaller;
+                margin-top: 20px;
+                margin-bottom: 20px;
                 text-align: center;
                 margin: 0 auto; /* Zentriere den Container */
     overflow-x: auto; /* Horizontales Scrollen aktivieren */
@@ -107,6 +109,7 @@
                 display: inline-block;
                 border: 0.7px solid black;
                 border-radius: 6px;
+                font-size: smaller;
             }
            
         }
@@ -125,8 +128,11 @@
         }
 
         .reset-icon{
-            font-size: 26px;
-            
+            font-size: 24.5px;
+            font-size: 1.3em;
+            border: 0.6px solid black;
+            border-radius: 6px;
+            padding: 4px 6px;
             display: flex;
             flex-direction: row;
             
@@ -135,9 +141,13 @@
         .filter select {
             padding: 5px;
             background-color: white;
-            border: 0.7px solid black;
+        
             border-radius: 6px;
             font-size: 1em;
+        }
+
+        .filter select:hover {
+            border: 1.3px solid black;
         }
 
         .filter option{
@@ -267,8 +277,9 @@
             <option value="80"> 80€</option>
             <option value="100">100€+</option>
         </select>
-        <div class="reset-icon" id="reset-icon" onclick="resetFilters()">ⓧ</div>
+        
         <button class="filterbtn" onclick="applyFilters()"><strong>Filter anwenden</strong></button>
+        <div class="reset-icon" id="reset-icon" onclick="resetFilters()">ⓧ</div>
         
     </div>
 

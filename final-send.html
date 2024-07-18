@@ -10,9 +10,10 @@
             background-color: #f9f9f9;
             margin: 0;
             padding: 0;
+            
         }
         .container {
-            max-width: 600px;
+            
             margin: 0 auto;
             padding: 20px;
             background-color: #fff;
@@ -21,10 +22,16 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .header {
+            margin-left: 40px;
+            margin-right: 40px;
             display: flex;
             align-items: center;
             align-items: center;
+            
             margin-bottom: 20px;
+            text-align: center;
+            margin-right: 20px;
+            margin-left: 20px;
         }
         .header img {
             align-items: center;
@@ -126,7 +133,18 @@
             width: 15px;
             margin: 0px;
         }
-
+        @media (max-width: 735px) {
+        
+            .header{
+                max-width: 600px;
+                margin-left: 20px;
+                margin-right: 20px;
+                text-align: center;
+            }
+           .container{
+            max-width: 600px;
+           }
+        }
        
     </style>
 </head>
