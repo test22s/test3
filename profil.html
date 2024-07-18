@@ -93,16 +93,22 @@
             .filter{
                 max-width: 500px;
                 text-align: center;
+                margin: 0 auto; /* Zentriere den Container */
+    overflow-x: auto; /* Horizontales Scrollen aktivieren */
+    white-space: nowrap; /* Verhindern, dass der Inhalt umbricht */
             }
             .filterbtn {
                 display: flex;
-               
+               display: inline-block;
                 font-size: smaller;
             }
+
             .filter select{
-                border: 1.7px black;
-                size: 1em;
+                display: inline-block;
+                border: 0.7px solid black;
+                border-radius: 6px;
             }
+           
         }
 
         .filterbtn {
@@ -112,14 +118,24 @@
             background-color: green;
         }
 
+
+
         .filterbtn:hover {
             background-color: rgb(2, 110, 2);
+        }
+
+        .reset-icon{
+            font-size: 26px;
+            
+            display: flex;
+            flex-direction: row;
+            
         }
 
         .filter select {
             padding: 5px;
             background-color: white;
-            
+            border: 0.7px solid black;
             border-radius: 6px;
             font-size: 1em;
         }
@@ -224,6 +240,9 @@
     <div class="title"><strong>Aktuelle Gebote von Unternehmen an Influencer:</strong></div>
 
     <div class="filter">
+
+       
+
         <select id="themenbereich-filter">
             <option value="">Themenbereich</option>
             <option value="Fitness">Fitness</option>
@@ -248,7 +267,9 @@
             <option value="80"> 80€</option>
             <option value="100">100€+</option>
         </select>
+        <div class="reset-icon" id="reset-icon" onclick="resetFilters()">ⓧ</div>
         <button class="filterbtn" onclick="applyFilters()"><strong>Filter anwenden</strong></button>
+        
     </div>
 
     <div class="container">
@@ -344,6 +365,19 @@
          
 
     <script>
+
+function showResetIcon(selectElement) {
+            var resetIcon = document.getElementById('reset-icon');
+            resetIcon.classList.add('active');
+        }
+
+        function resetFilters() {
+            document.getElementById('themenbereich-filter').value = "";
+            document.getElementById('follower-filter').value = "0";
+            document.getElementById('preis-filter').value = "1000";
+            document.getElementById('reset-icon').classList.remove('active');
+            applyFilters();
+        }
 
 document.getElementById('profilcard').addEventListener('click', function() {
             // Zeige die Ladeanimation
