@@ -3,36 +3,463 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OSL - Über uns</title>
+    <title>Auswahlseite</title>
     <style>
-        body {
+        body, html {
             margin: 0;
             padding: 0;
-            min-height: 100vh;
+            height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            background-color: white; /* Hellblau */
-            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+            background-color: white;
+            overflow: hidden;
+            position: relative;
+            
         }
 
         header {
             width: 100%;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
-            border-bottom: 2px solid black;
             background-color: white;
+           
             position: fixed;
             top: 0;
             z-index: 10;
         }
 
+       
+
+      
+       h5 {
+            font-family: sans-serif;
+            text-align: left;
+            margin: 10px;
+            position: absolute;
+            font-weight: 700;
+            top: 16.4px;
+            left: 20px;
+            margin-left: 17px;
+            font-size: 1.6rem;
+        } 
+
+        .menu {
+                 cursor: pointer;
+             }
+    
+             
+            /* Menü */
+            .menu {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                display: flex;
+                flex-direction: column;
+                cursor: pointer;
+                top: 25px;
+            }
+    
+            .menu-line {
+                width: 25px;
+                height: 3px;
+                background-color: #0e0e0e; /* Dunkelblau */
+                margin: 4px 0;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+                
+            }
+    
+            .menu-line:hover {
+                background-color: #1c8cd7; /* Hellere Variante von Dunkelblau */
+            }
+    
+     
+             .menu-line {
+                 width: 25px;
+                 height: 3px;
+                 background-color: #0e0e0e; /* Dunkelblau */
+                 margin: 4px 0;
+                 margin-right: 20px;
+                 border-radius: 5px;
+                 transition: background-color 0.3s ease;
+             }
+     
+             .menu-line:hover {
+                 background-color: #1c8cd7; /* Hellere Variante von Dunkelblau */
+             }
+     
+          /* Side-Menü */
+        .side-menu {
+            border-radius: 10px;
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            right: 0;
+            background-color: white; /* Dunkelblau */
+            white-space: nowrap;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 80px;
+            z-index: 10000;
+        }
+
+        .menuBtn {
+            padding: 10px 10px;
+            text-decoration: none;
+            margin-bottom: 12px;
+            border: 1px solid rgb(234, 232, 232);
+            border-radius: 9px;
+            background-color: rgb(234, 232, 232);
+            margin-right: 28px;
+            margin-left: 10px;
+            font-size: 1.2rem;
+            white-space: nowrap;
+            color: black;
+            display: block;
+            transition: 0.3s;
+            font-family: sans-serif;
+        }
+
+        .side-menu a:hover {
+            background-color: #6e71724f; /* Hellere Variante von Dunkelblau */
+        }  
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+            color: black;
+            cursor: pointer;
+        }
+     
+             .close-btn {
+                 position: absolute;
+                 top: 20px;
+                 right: 25px;
+                 font-size: 36px;
+                 margin-left: 50px;
+                 color: black;
+                 cursor: pointer;
+             }
+     
+
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 15;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+
+           /* Overlay for dimming background */
+           .overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+             /* Semi-transparent black */
+            z-index: 1000; /* Below side menu but above other content */
+        }
+
+        .overlay.active {
+            display: block; /* Show overlay when active */
+        }
+
+       
+
+
+        .content{
+            max-width: 200px;
+        }
+
+        h4 {
+            margin-top: 20px;
+            color: black;
+            font-size: 23px;
+            text-align: center;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            z-index: 1;
+        }
+
+        .btn1 {
+            position: relative;
+            padding: 7px;
+            margin-left: 4px;
+            margin-right: 15px;
+            size: 0.8em;
+            cursor: pointer;
+            border: 1.5px solid black;
+            border-radius: 20px;
+            
+            background-color: white;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+        .btn2 {
+            position: relative;
+            padding: 7px;
+            margin-left: 15px;
+           margin-right: 4px;
+            size: 0.8em;
+            cursor: pointer;
+            border: 1.5px solid black;
+            border-radius: 20px;
+        
+            background-color: white;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn1:hover {
+            transform: scale(1.05);
+        }
+
+        .btn1:active {
+            animation: clickAnimation 0.2s ease;
+        }
+        .btn2:hover {
+            transform: scale(1.05);
+        }
+
+        .btn2:active {
+            animation: clickAnimation 0.2s ease;
+        }
+
+
+        @keyframes clickAnimation {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(0.95);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .btn1.selected {
+            background-color: lightgray;
+        }
+
+        .btn2.selected {
+            background-color: lightgray;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #213d6df3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1em;
+            visibility: hidden;
+        }
+
+        .btn1.selected .checkmark {
+            visibility: visible;
+        }
+
+        .btn2.selected .checkmark {
+            visibility: visible;
+        }
+
+        .btn-weiter {
+            margin-top: 45px;
+            padding: 8px 25px;
+            font-size: 16px;
+            size: 0.8em;
+            text-align: center;
+            border-radius: 8px;
+            color: white;
+            border: 1.5px solid #213d6df3;
+            
+            background-color: #213d6df3 ;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .btn-weiter.enabled {
+            cursor: pointer;
+            opacity: 1;
+        }
+
+        .bubbles {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .bubble {
+            fill:  #213d6df3 ;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-20px);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 0.6;
+            }
+        }
+
+        .circle {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            background-color: #213d6df3;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            display: none;
+            z-index: 2;
+        }
+
+        .loading-animation {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .loading-animation .dot {
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            animation: loading 1s infinite;
+        }
+
+        .loading-animation .dot:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .loading-animation .dot:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .loading-animation .dot:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        @keyframes loading {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+        }
+
+        @keyframes expandCircle {
+            0% {
+                width: 100px;
+                height: 100px;
+                bottom: -50px;
+                transform: translateX(-50%);
+            }
+            50% {
+                width: 500px;
+                height: 500px;
+                bottom: calc(50% - 250px);
+                transform: translateX(-50%);
+            }
+            100% {
+                width: 3000px;
+                height: 3000px;
+                bottom: calc(50% - 1500px);
+                transform: translateX(-50%);
+            }
+        }
+
+        .fade-out {
+            animation: fadeOut 1s forwards;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                gap: 5px;
+            }
+
+           
+        }
+
+        .txt{
+            font-family: sans-serif;
+        }
+
+        .icon{
+             font-size: 10px;
+            text-align: center;
+            display: inline-block;
+            margin: 10px;
+            display: flex;
+            font-size: small;
+           
+        }
+
+    
+
         h5 {
             font-family: sans-serif;
             text-align: right;
+            margin-right: 23px;
             margin: 10px;
             font-size: 1.5rem;
             text-decoration: underline;
@@ -40,21 +467,25 @@
 
         .container {
             text-align: center;
-            margin-top: 100px; /* Platz für den Header */
+            margin-top: 50px; /* Platz für den Header */
             padding: 20px;
             width: 100%;
             flex-grow: 1;
-        }
-
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: smaller;
+              }
         .section {
-            margin: 20px 0;
+            margin: 20px;
             padding: 20px;
-            border: 2px solid rgb(63, 186, 231);
+            border: 3px solid #213d6df3;
             border-radius: 16px;
             background-color: white;
-            margin-left: 15px;
-            margin-right: 15px;
-            margin-bottom: 35px;
+            max-width: 600px;
+            width: 100%;
+        
+            margin-bottom: 50px;
         }
 
         .section p {
@@ -64,106 +495,147 @@
         }
 
         .section img {
-            max-width: 350px; /* Bildgröße angepasst */
-            max-height: 200px;
+            width: 150px; /* Bildgröße angepasst */
             border-radius: 10px;
-            margin: 4px;
+            margin-bottom: 20px;
         }
 
-        @media (max-width: 600px) {
-            .section img {
-                max-width: 200px; /* Bildgröße für kleine Bildschirme */
-                max-height: 120px;
-            }
-            .logo1 {
-                max-height: 70px;
-                max-width: 70px;
-            }
-            header{
-                max-width: 500px;
-            }
-        }
-
-        .close-btn {
-            font-size: 38px;
-            margin-left: 18px;
-            color: black;
-            cursor: pointer;
-        }
-
-        /* Blaue Bläschen */
-        .bubble {
-            position: absolute;
-            background-color: rgba(63, 189, 231, 0.5); /* Halbtransparentes Blau */
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite alternate;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(-50px);
-            }
-        }
-
-        h2 {
-            font-family: sans-serif;
-        }
-
-        .footer {
-            width: 100%;
-            background-color: #e5e4e4; /* Hellgrau */
-            color: rgb(6, 6, 6);
-            text-align: center;
-            padding: 10px 0;
-            font-family: sans-serif;
-            position: fixed;
-            bottom: 0;
-            z-index: 10;
-        }
-
-        .footertxt {
-            margin-bottom: 8px;
-        }
-
-        .footer a {
-            color: rgb(8, 21, 156);
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
+
+    <div class="overlay" id="overlay"></div>
     <header>
-        <div class="close-btn" onclick="window.location.href='index.html'">&times;</div>
-        <h5><u>OSL</u></h5>
-    </header>
+        <h5> OSL </h5>
+        <div class="menu" id="menu">
+            <div class="menu-line"></div>
+            <div class="menu-line"></div>
+            <div class="menu-line"></div>
+        </div>
+        </header>
+        
+    
+        <div id="sideMenu" class="side-menu">
+    
+        
+    
+        <span class="close-btn" id="closeBtn">&times;</span>
+        <a class="menuBtn" href="#" data-target="acc.html"><strong>Account</strong></a>
+        <a class="menuBtn" href="#" data-target="about.html"> <strong> Über uns </strong> </a>
+        <a class="menuBtn" href="#" data-target="services.html"> <strong> Was wir machen </strong></a>
+        <a class="menuBtn" href="#" data-target="contact.html"> <strong> Kontakt </strong> </a>
+        <a class="menuBtn" href="index.html" data-target="index.html"> <strong>Loslegen </strong> </a>
+    
+    </div>
+
+
+
+
 
     <div class="container">
         <div class="section">
-            <img class="logo" src="Untitled design (1).png" alt="Logo">
-            <h2>Was wir machen</h2>
-            <p>
+            <img class="logo" src="Glint (4).png "alt="Logo">
+            <h2>Über uns</h2>  
+            <p class="txt">
                 Wir sind ein engagiertes Team von Fachleuten, die sich darauf spezialisiert haben, die besten Lösungen für unsere Kunden zu finden.
                 Unser Ziel ist es, Brücken zwischen Influencern und Unternehmen zu bauen und langfristige Partnerschaften zu fördern.
             </p>
         </div>
     </div>
 
-    <div class="footer">
-        <div class="footertxt">2024 OSL. Alle Rechte vorbehalten</div>
-        <a class="footera" href="#"> <u>Impressum</u> </a>
-        <a class="footera" href="#"> <u>Datenschutz</u> </a>
-        <a class="footera" href="#"> <u>Kontakt</u> </a>
+
+
+
+ 
+
+    <div id="circle" class="circle">
+        <div class="loading-animation">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
     </div>
+
+  
+
+    <script>
+
+document.getElementById('menu').addEventListener('click', function() {
+            document.getElementById('sideMenu').style.width = '250px';
+            overlay.classList.toggle('active');
+        });
+    
+        overlay.addEventListener('click', function() {
+                sideMenu.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+    
+        closeBtn.addEventListener('click', function() {
+            document.getElementById('sideMenu').style.width = '0';
+                overlay.classList.remove('active');
+            });
+    
+    
+        // Event-Listener für die Links im Side-Menü
+        document.querySelectorAll('.menuBtn').forEach(function(btn) {
+            btn.addEventListener('click', function(event) {
+                event.preventDefault(); // Verhindert das Standard-Verhalten des Links
+                var target = this.getAttribute('data-target');
+                
+                // Einfahren des Side-Menüs
+                document.getElementById('sideMenu').style.width = '0';
+                
+                // Zeige die Ladeanimation
+                document.getElementById('loadingOverlay').style.display = 'flex';
+                
+                // Navigiere zur Zielseite nach einer kurzen Verzögerung (hier 0.5 Sekunden)
+                setTimeout(function() {
+                    window.location.href = target;
+                }, 300);
+            });
+         });
+    
+
+         function toggleSelection(element) {
+            element.classList.toggle('selected');
+            const selectedButtons = document.querySelectorAll('.btn1.selected');
+            const btnWeiter = document.getElementById('btn-weiter');
+            if (selectedButtons.length > 0) {
+                btnWeiter.disabled = false;
+                btnWeiter.classList.add('enabled');
+            } else {
+                btnWeiter.disabled = true;
+                btnWeiter.classList.remove('enabled');
+            }
+        }
+
+        function toggleSelection(element) {
+            element.classList.toggle('selected');
+            const selectedButtons = document.querySelectorAll('.btn2.selected');
+            const btnWeiter = document.getElementById('btn-weiter');
+            if (selectedButtons.length > 0) {
+                btnWeiter.disabled = false;
+                btnWeiter.classList.add('enabled');
+            } else {
+                btnWeiter.disabled = true;
+                btnWeiter.classList.remove('enabled');
+            }
+        }
+
+        document.getElementById('btn-weiter').addEventListener('click', function() {
+            if (!this.disabled) {
+                const content = document.getElementById('content');
+                const circle = document.getElementById('circle');
+                content.classList.add('fade-out');
+                circle.style.display = 'block';
+                circle.style.animation = 'expandCircle 1s forwards';
+                circle.addEventListener('animationend', function() {
+                    window.location.href = 'influencer2-1.html';
+                });
+            }
+        });
+    </script>
 </body>
 </html>
+
 
