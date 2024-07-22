@@ -27,10 +27,23 @@
             font-size: 22px;
         }
 
+        .acc-menu{
+            height: 29px;
+            width: 29px;
+          
+        }
+
+        .acc-menu:hover{
+            background-color: rgba(128, 128, 128, 0.201);
+            border-radius: 12px;
+        }
+
         .menu-icon {
             font-size: 26px;
             cursor: pointer;
         }
+
+      
 
         .menu-icon:hover {
             border-radius: 20%;
@@ -39,6 +52,7 @@
         }
 
         .menu {
+            
             display: none;
             flex-direction: column;
             position: absolute;
@@ -237,6 +251,7 @@
     <header>
         <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
         <h1><u>OSL</u></h1>
+        <img class="acc-menu" id="acc-menu"  src="edituser-icon-removebg-preview.png" >
     </header>
     <div class="menu" id="menu">
         
@@ -409,6 +424,16 @@ document.getElementById('profilcard').addEventListener('click', function() {
                 menu.style.display = 'flex';
             }
         }
+
+        document.getElementById('acc-menu').addEventListener('click', function() {
+            // Zeige die Ladeanimation
+           
+
+            // Navigiere zur Index2-Seite nach einer kurzen Verzögerung (hier 0.5 Sekunden)
+            setTimeout(function() {
+                window.location.href = 'account.html';
+            }, 0);
+        });
 
         function applyFilters() {
             setTimeout(function() {

@@ -454,7 +454,16 @@
 </head>
 <body>
 
-    <div class="overlay" id="overlay"></div>
+
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $selectedTopics = $_POST['selectedTopics'];
+        $file = 'ausgewählte_themen.txt';
+        file_put_contents($file, implode("\n", $selectedTopics) . "\n", FILE_APPEND);
+    }
+    ?>
+
+    
     <header>
         <h5> OSL </h5>
         <div class="menu" id="menu">
@@ -466,7 +475,7 @@
         
     <div id="sideMenu" class="side-menu">
     
-     
+        <div class="overlay" id="overlay"></div>
     
         <span class="close-btn" id="closeBtn">&times;</span>
         <a class="menuBtn" href="#" data-target="acc.html"><strong>Account</strong></a>
