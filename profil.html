@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
             font-family: sans-serif;
-            background-color: #ffffff;
+            background-color: #f9f9f9;
             color: #000000;
         }
 
@@ -20,7 +20,7 @@
             align-items: center;
             padding: 10px 20px;
             background-color: #ffffff;
-            border-bottom: 2.5px solid rgb(161, 159, 159);
+            box-shadow: 0 0 10px rgba(28, 28, 28, 0.3);
         }
 
         h1 {
@@ -106,8 +106,8 @@
         @media (max-width: 735px) {
             .filter{
                 font-size: smaller;
-                margin-top: 20px;
-                margin-bottom: 20px;
+                margin-top: 30px;
+                margin-bottom: 26px;
                 text-align: center;
                 margin: 0 auto; /* Zentriere den Container */
     overflow-x: auto; /* Horizontales Scrollen aktivieren */
@@ -129,22 +129,23 @@
         }
 
         .filterbtn {
-            border: 0.1px solid green;
+            border: 0.1px solid #213d6df3;
             border-radius: 6px;
             color: white;
-            background-color: green;
+            background-color: #213d6df3;
+            transition: background-color 0.3s;
         }
 
 
 
         .filterbtn:hover {
-            background-color: rgb(2, 110, 2);
+            background-color: #000000;
         }
 
         .reset-icon{
             font-size: 25px;
             font-size: 1.15em;
-            border: 1.5px solid red;
+            border: 1.5px solid black;
             border-radius: 6px;
             padding: 3px 5px;
             display: flex;
@@ -154,8 +155,8 @@
 
         .filter select {
             padding: 5px;
-            background-color: white;
-        
+            background: none;
+            border: 1.4px solid black;
             border-radius: 6px;
             font-size: 1em;
         }
@@ -182,10 +183,11 @@
             width: 90%;
             max-width: 600px;
             height: 130px;
-            border: 2px solid #3aaae7f3;
+            border: none;
             border-radius: 10px;
             padding: 10px;
-            background-color: #f0f8ff;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(28, 28, 28, 0.3);
         }
 
         .profile-card img {
@@ -299,6 +301,95 @@
     </div>
 
     <div class="container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="profile-card">
+            <img src="" alt="Profilbild" id="profileCardImage">
+            <div class="profile-info">
+                <div id="profileCardUsername">Name: </div>
+
+                <div>Follower: 5,8k</div>
+
+                <div id="profileCardProduct"> Produkt:</div>
+                <div id="profileCardOffer">Angebot: </div>
+               
+                <div class="date">vor 1min</div>
+
+            </div>
+        </div>
+        
+        <script>
+            window.onload = function() {
+                const savedUsername = localStorage.getItem('username');
+                const savedProduct = localStorage.getItem('product');
+                const savedOffer = localStorage.getItem('offer');
+                
+                
+        
+                if (savedUsername) document.getElementById('profileCardUsername').innerText = `Name: ${savedUsername}`;
+                if (savedProduct) document.getElementById('profileCardProduct').innerText = `Produkt: ${savedProduct}`;
+                if (savedOffer) document.getElementById('profileCardOffer').innerText = `Angebot: ${savedOffer}`;
+        
+                // Profilbild laden, falls gespeichert
+                const profilePicture = document.getElementById('profilePicture');
+                const profileCardImage = document.getElementById('profileCardImage');
+        
+                profilePicture.addEventListener('change', function() {
+                    const file = profilePicture.files[0];
+                    const reader = new FileReader();
+        
+                    reader.onloadend = function() {
+                        profileCardImage.src = reader.result;
+                        localStorage.setItem('profilePicture', reader.result);
+                    };
+        
+                    if (file) {
+                        reader.readAsDataURL(file);
+                    } else {
+                        profileCardImage.src = "";
+                    }
+                });
+        
+                const savedProfilePicture = localStorage.getItem('profilePicture');
+                if (savedProfilePicture) {
+                    profileCardImage.src = savedProfilePicture;
+                }
+            };
+        </script>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         <div id="profilcard" class="profile-card" data-themenbereich="Fitness" data-follower="5800" data-preis="35">
             <img src="440113333_827187646121032_6550800338063912665_n.jpg" alt="Profilbild">

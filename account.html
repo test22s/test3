@@ -7,12 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <style>
-
-@media (max-width: 735px) {
-           
-           
-        }
-    
     body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -29,6 +23,7 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 500px;
+    margin-top: 210px;
     width: 100%;
     transform: perspective(1000px) rotateX(0deg);
     transition: transform 0.3s;
@@ -39,6 +34,8 @@
 h2 {
     text-align: center;
     color: #333333;
+    
+    
 }
 
 .input-group {
@@ -55,6 +52,8 @@ label {
 label i {
     margin-right: 10px;
 }
+
+
 
 input, textarea {
     width: 100%;
@@ -77,6 +76,7 @@ input:focus, textarea:focus {
     border: none;
     padding: 10px 20px;
     border-radius: 6px;
+    font-weight: bolder;
     cursor: pointer;
     width: 100%;
     transition: background-color 0.3s;
@@ -101,7 +101,13 @@ input:focus, textarea:focus {
     left: 20px;
 }
 
-
+@media (max-width: 735px) {
+           
+    .form-container{
+        height: 100%;
+    }
+           
+         }
 
 </style>
 <body>
@@ -119,6 +125,16 @@ input:focus, textarea:focus {
             <div class="input-group">
                 <label for="profilePicture"><i class="fas fa-camera"></i> Profilbild</label>
                 <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
+            </div>
+
+            <div class="input-group">
+                <label for="product"><i class="fas fa-info-circle"></i> Produkt:</label>
+                <textarea id="product" name="product" rows="4"></textarea>
+            </div>
+
+            <div class="input-group">
+                <label for="offer"><i class="fas fa-info-circle"></i> Angebot: </label>
+                <textarea id="offer" name="offer" rows="4"></textarea>
             </div>
 
             <div class="input-group">
@@ -144,11 +160,15 @@ input:focus, textarea:focus {
         function saveProfile() {
     const username = document.getElementById('username').value;
     const description = document.getElementById('description').value;
+    const offer = document.getElementById('offer').value;
+    const product = document.getElementById('product').value;
     const email = document.getElementById('email').value;
     const phone = document.getElementById('phone').value;
 
     localStorage.setItem('username', username);
     localStorage.setItem('description', description);
+    localStorage.setItem('offer', offer);
+    localStorage.setItem('product', product);
     localStorage.setItem('email', email);
     localStorage.setItem('phone', phone);
 
@@ -163,11 +183,15 @@ input:focus, textarea:focus {
 window.onload = function() {
     const savedUsername = localStorage.getItem('username');
     const savedDescription = localStorage.getItem('description');
+    const savedOffer = localStorage.getItem('offer');
+    const savedProduct = localStorage.getItem('product');
     const savedEmail = localStorage.getItem('email');
     const savedPhone = localStorage.getItem('phone');
 
     if (savedUsername) document.getElementById('username').value = savedUsername;
     if (savedDescription) document.getElementById('description').value = savedDescription;
+    if (savedOffer) document.getElementById('offer').value = savedOffer;
+    if (savedProduct) document.getElementById('product').value = savedProduct;
     if (savedEmail) document.getElementById('email').value = savedEmail;
     if (savedPhone) document.getElementById('phone').value = savedPhone;
 };
