@@ -23,8 +23,8 @@
         }
         .header {
             display: flex;
-           
-            height: 50px;
+            width: 100%;
+            height: 60px;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
@@ -130,9 +130,13 @@
             text-decoration: none;
         }
         .back-btn {
-            font-size: 24px;
+            font-size: 36px;
             cursor: pointer;
             margin-left: 10px;
+            font-weight: bolder;
+            font-weight: 800;
+            
+            
         }
         .menu {
             cursor: pointer;
@@ -142,11 +146,16 @@
             margin: 10px;
             margin-right: 10px;
             width: 25px;
-            height: 3px;
+            height: 1px;
             background-color: #0e0e0e;
             margin: 4px 0;
             border-radius: 5px;
             transition: background-color 0.3s ease;
+           
+            border: none;
+            padding: 2px 2px;
+            border-radius: 9px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
         .menu-line:hover {
             background-color: #1c8cd7;
@@ -180,23 +189,27 @@
             padding-top: 80px;
             z-index: 10000;
         }
+       
         .menuBtn {
             padding: 10px 10px;
             text-decoration: none;
-            margin-bottom: 16px;
-            border: none;
+            margin-bottom: 12px;
+            border: 1px solid rgb(234, 232, 232);
+            border-radius: 9px;
+            background-color: rgb(234, 232, 232);
             margin-right: 28px;
             margin-left: 10px;
             font-size: 1.2rem;
-            border-bottom: 1.2px solid rgb(163, 163, 163);
+            white-space: nowrap;
             color: black;
             display: block;
             transition: 0.3s;
             font-family: sans-serif;
         }
+
         .side-menu a:hover {
-            background-color: #1c8cd7;
-        }
+            background-color: #6e71724f; /* Hellere Variante von Dunkelblau */
+        }  
         .close-btn {
             position: absolute;
             top: 20px;
@@ -206,12 +219,33 @@
             color: black;
             cursor: pointer;
         }
+
+
+        @media (max-width: 735px) {
+            
+            body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            max-width: 720px;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .send-button{
+            text-align: center;
+        }
+
+           
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <span class="back-btn" id="back-btn" >&larr;</span>
+            <span class="back-btn" id="back-btn" >⇽</span>
             <h1>Profil</h1>
             <div class="menu" id="menu">
                 <div class="menu-line"></div>
@@ -222,7 +256,7 @@
         <div class="profile-info">
             <img src="profilbild.jpg" alt="Profilbild" width="50">
             <div>
-                <h1>@achi1m</h1>
+               <div id="profileCardUsername">  <h1>@achi1m</h1>  </div>
                 <div class="subheader">
                     <img src="socialmediaicon.png" alt="Social Media" width="20"> Instagram
                     <br>
@@ -230,14 +264,14 @@
                 </div>
             </div>
         </div>
-        <div class="description">
+        <div class="description" id="description"  >
             <p> <strong>Beschreibung des Benutzers:</strong> </p>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis velit officiis itaque esse ex excepturi quam iste pariatur similique! Eius maiores officia voluptatum excepturi? Aliquam qui fugiat maiores quos possimus.</p>
         </div>
         <button class="send-button" id="send-button" >Nachricht Senden</button>
         <div class="info">
-            <p>Email: <a href="mailto:email@example.com">email@example.com</a></p>
-            <p>Telefon: <a href="tel:+123456789">+123456789</a></p>
+            <p>Email: <a href="mailto:email@example.com">info@osl-agency.com</a></p>
+            <p>Telefon: <a href="tel:+123456789">+49 15204483560</a></p>
         </div>
         <div class="info">
             <p><a href="#">AGBs</a></p>

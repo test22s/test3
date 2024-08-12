@@ -106,8 +106,8 @@
         @media (max-width: 735px) {
             .filter{
                 font-size: smaller;
-                margin-top: 30px;
-                margin-bottom: 26px;
+                margin-top: 34px;
+                margin-bottom: 32px;
                 text-align: center;
                 margin: 0 auto; /* Zentriere den Container */
     overflow-x: auto; /* Horizontales Scrollen aktivieren */
@@ -317,7 +317,7 @@
 
 
 
-        <div class="profile-card">
+        <div class="profile-card" id="profilcard">
             <img src="" alt="Profilbild" id="profileCardImage">
             <div class="profile-info">
                 <div id="profileCardUsername">Name: </div>
@@ -331,6 +331,8 @@
 
             </div>
         </div>
+
+        <div class="ad-space" data-themenbereich="Fitness" data-follower="5800" data-preis="35" >Werbung</div>
         
         <script>
             window.onload = function() {
@@ -517,10 +519,10 @@ document.getElementById('profilcard').addEventListener('click', function() {
         }
 
         document.getElementById('acc-menu').addEventListener('click', function() {
-            // Zeige die Ladeanimation
+           
            
 
-            // Navigiere zur Index2-Seite nach einer kurzen Verzögerung (hier 0.5 Sekunden)
+            // Navigiere zur final-Seite nach einer kurzen Verzögerung (hier 0.5 Sekunden)
             setTimeout(function() {
                 window.location.href = 'account.html';
             }, 0);

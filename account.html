@@ -8,194 +8,199 @@
 </head>
 <style>
     body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
-.form-container {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-    margin-top: 210px;
-    width: 100%;
-    transform: perspective(1000px) rotateX(0deg);
-    transition: transform 0.3s;
-}
-
-
-
-h2 {
-    text-align: center;
-    color: #333333;
-    
-    
-}
-
-.input-group {
-    margin-bottom: 15px;
-}
-
-label {
-    font-size: 16px;
-    color: #333333;
-    display: flex;
-    align-items: center;
-}
-
-label i {
-    margin-right: 10px;
-}
-
-
-
-input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    transition: all 0.3s;
-}
-
-input:focus, textarea:focus {
-    border-color: #1c1c1c;
-    box-shadow: 0 0 5px rgba(28, 28, 28, 0.3);
-}
-
-.savebtn {
-    background-color: #3c4f70;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-weight: bolder;
-    cursor: pointer;
-    width: 100%;
-    transition: background-color 0.3s;
-}
-
-.savebtn:hover {
-    background-color: #000000;
-}
-
-#savedMessage {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #1c1c1c;
-    text-align: center;
-}
-
-.backbtn{
-    text-align: left;
-    background: none;
-    border: none;
-    margin-bottom: 40px;
-    left: 20px;
-}
-
-@media (max-width: 735px) {
-           
-    .form-container{
-        height: 100%;
+        font-family: Arial, sans-serif;
+        background-color: #f8f8f8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
     }
-           
-         }
 
+    .form-container {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+    }
+
+    h2 {
+        text-align: center;
+        color: #333333;
+    }
+
+    .input-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-size: 16px;
+        color: #333333;
+        display: flex;
+        align-items: center;
+    }
+
+    label i {
+        margin-right: 10px;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        transition: all 0.3s;
+    }
+
+    input:focus, textarea:focus {
+        border-color: #1c1c1c;
+        box-shadow: 0 0 5px rgba(28, 28, 28, 0.3);
+    }
+
+    .savebtn {
+        background-color: #3c4f70;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-weight: bolder;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s;
+    }
+
+    .savebtn:hover {
+        background-color: #000000;
+    }
+
+    #savedMessage {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #1c1c1c;
+        text-align: center;
+    }
+
+    .backbtn {
+        text-align: left;
+        background: none;
+        border: none;
+        margin-bottom: 40px;
+        left: 20px;
+    }
+
+    @media (max-width: 735px) {
+        .form-container {
+            padding: 15px;
+            margin-top: 0;
+            box-shadow: none;
+            border-radius: 0;
+            margin-bottom: 0;
+            height: auto;
+        }
+
+        h2 {
+            font-size: 20px;
+        }
+
+        label {
+            font-size: 14px;
+        }
+
+        input, textarea {
+            padding: 8px;
+        }
+
+        .savebtn {
+            padding: 8px 15px;
+        }
+
+        #savedMessage {
+            font-size: 12px;
+        }
+    }
 </style>
 <body>
     <div class="form-container">
         <form id="profileForm">
-           
             <h2>Profil bearbeiten</h2>
-           
-
             <div class="input-group">
                 <label for="username"><i class="fas fa-user"></i> Benutzername</label>
                 <input type="text" id="username" name="username">
             </div>
-
             <div class="input-group">
                 <label for="profilePicture"><i class="fas fa-camera"></i> Profilbild</label>
                 <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
             </div>
-
             <div class="input-group">
                 <label for="product"><i class="fas fa-info-circle"></i> Produkt:</label>
                 <textarea id="product" name="product" rows="4"></textarea>
             </div>
-
             <div class="input-group">
                 <label for="offer"><i class="fas fa-info-circle"></i> Angebot: </label>
                 <textarea id="offer" name="offer" rows="4"></textarea>
             </div>
-
             <div class="input-group">
                 <label for="description"><i class="fas fa-info-circle"></i> Beschreibung</label>
                 <textarea id="description" name="description" rows="4"></textarea>
             </div>
-
             <div class="input-group">
                 <label for="email"><i class="fas fa-envelope"></i> E-Mail</label>
                 <input type="email" id="email" name="email">
             </div>
-
             <div class="input-group">
                 <label for="phone"><i class="fas fa-phone"></i> Telefonnummer</label>
                 <input type="tel" id="phone" name="phone">
             </div>
-
             <button class="savebtn" type="button" onclick="saveProfile()">Speichern</button>
         </form>
         <p id="savedMessage"></p>
     </div>
     <script>
         function saveProfile() {
-    const username = document.getElementById('username').value;
-    const description = document.getElementById('description').value;
-    const offer = document.getElementById('offer').value;
-    const product = document.getElementById('product').value;
-    const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
+            const username = document.getElementById('username').value;
+            const description = document.getElementById('description').value;
+            const offer = document.getElementById('offer').value;
+            const product = document.getElementById('product').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
 
-    localStorage.setItem('username', username);
-    localStorage.setItem('description', description);
-    localStorage.setItem('offer', offer);
-    localStorage.setItem('product', product);
-    localStorage.setItem('email', email);
-    localStorage.setItem('phone', phone);
+            localStorage.setItem('username', username);
+            localStorage.setItem('description', description);
+            localStorage.setItem('offer', offer);
+            localStorage.setItem('product', product);
+            localStorage.setItem('email', email);
+            localStorage.setItem('phone', phone);
 
-    document.getElementById('savedMessage').innerText = 'Ihre Daten wurden gespeichert.';
+            document.getElementById('savedMessage').innerText = 'Ihre Daten wurden gespeichert.';
 
-    setTimeout(function() {
-                    window.location.href = 'profil.html';
-                }, 280);
-}
+            setTimeout(function() {
+                window.location.href = 'profil.html';
+            }, 280);
+        }
 
-// Laden der gespeicherten Daten beim Seitenladen
-window.onload = function() {
-    const savedUsername = localStorage.getItem('username');
-    const savedDescription = localStorage.getItem('description');
-    const savedOffer = localStorage.getItem('offer');
-    const savedProduct = localStorage.getItem('product');
-    const savedEmail = localStorage.getItem('email');
-    const savedPhone = localStorage.getItem('phone');
+        window.onload = function() {
+            const savedUsername = localStorage.getItem('username');
+            const savedDescription = localStorage.getItem('description');
+            const savedOffer = localStorage.getItem('offer');
+            const savedProduct = localStorage.getItem('product');
+            const savedEmail = localStorage.getItem('email');
+            const savedPhone = localStorage.getItem('phone');
 
-    if (savedUsername) document.getElementById('username').value = savedUsername;
-    if (savedDescription) document.getElementById('description').value = savedDescription;
-    if (savedOffer) document.getElementById('offer').value = savedOffer;
-    if (savedProduct) document.getElementById('product').value = savedProduct;
-    if (savedEmail) document.getElementById('email').value = savedEmail;
-    if (savedPhone) document.getElementById('phone').value = savedPhone;
-};
-
+            if (savedUsername) document.getElementById('username').value = savedUsername;
+            if (savedDescription) document.getElementById('description').value = savedDescription;
+            if (savedOffer) document.getElementById('offer').value = savedOffer;
+            if (savedProduct) document.getElementById('product').value = savedProduct;
+            if (savedEmail) document.getElementById('email').value = savedEmail;
+            if (savedPhone) document.getElementById('phone').value = savedPhone;
+        };
     </script>
 </body>
 </html>
+

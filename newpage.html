@@ -362,17 +362,20 @@
             left: 50%;
             width: 100px;
             height: 100px;
+            margin: 0;
             background-color: #213d6df3;
             border-radius: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-100%);
             display: none;
             z-index: 2;
+
+           
         }
 
         .loading-animation {
             position: absolute;
-            top: 50%;
-            left: 50%;
+             top: 50%;
+             left: 50%;
             transform: translate(-50%, -50%);
             display: flex;
             justify-content: center;
@@ -454,15 +457,14 @@
 </head>
 <body>
 
-
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $selectedTopics = $_POST['selectedTopics'];
-        $file = 'ausgewählte_themen.txt';
-        file_put_contents($file, implode("\n", $selectedTopics) . "\n", FILE_APPEND);
-    }
-    ?>
-
+    <div id="circle" class="circle">
+        <div class="loading-animation">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+ 
     
     <header>
         <h5> OSL </h5>
@@ -501,15 +503,9 @@
         </div>
     </div>
 
-    <button id="btn-weiter" class="btn btn-weiter" disabled><strong>Weiter</strong></button>
+    <button id="btn-weiter" class="btn btn-weiter" disabled ><strong>Weiter</strong></button>
 
-    <div id="circle" class="circle">
-        <div class="loading-animation">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-        </div>
-    </div>
+   
 
   
 
@@ -589,6 +585,7 @@ document.getElementById('menu').addEventListener('click', function() {
                 });
             }
         });
+
     </script>
 </body>
 </html>
