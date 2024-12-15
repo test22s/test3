@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Social Media Formular</title>
     <style>
-        body, html {
+   
+           
+   body, html {
             margin: 0;
             padding: 0;
             height: 100%;
@@ -18,190 +20,10 @@
             font-size: 13.5px;
         }
 
-        header {
-            width: 100%;
-            padding: 10px 20px;
-            
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: white;
-           
-            position: fixed;
-            top: 0;
-            z-index: 10;
-        }
-
-       
-
-      
-       h5 {
-            font-family: sans-serif;
-            text-align: left;
-            margin: 10px;
-            position: absolute;
-            font-weight: 700;
-            top: 16.4px;
-            left: 20px;
-            margin-left: 17px;
-            font-size: 1.6rem;
-        } 
-
-        .menu {
-                 cursor: pointer;
-             }
-    
-             
-            /* Menü */
-            .menu {
-                position: absolute;
-                top: 20px;
-                right: 20px;
-                display: flex;
-                flex-direction: column;
-                cursor: pointer;
-                top: 25px;
-            }
-    
-            .menu-line {
-                width: 25px;
-                height: 3px;
-                background-color: #0e0e0e; /* Dunkelblau */
-                margin: 4px 0;
-                border-radius: 5px;
-                transition: background-color 0.3s ease;
-                
-            }
-    
-            .menu-line:hover {
-                background-color: #1c8cd7; /* Hellere Variante von Dunkelblau */
-            }
-    
-     
-             .menu-line {
-                 width: 25px;
-                 height: 3px;
-                 background-color: #0e0e0e; /* Dunkelblau */
-                 margin: 4px 0;
-                 margin-right: 20px;
-                 border-radius: 5px;
-                 transition: background-color 0.3s ease;
-             }
-     
-             .menu-line:hover {
-                 background-color: #1c8cd7; /* Hellere Variante von Dunkelblau */
-             }
-     
-             /* Side-Menü */
-             .side-menu {
-                 border-radius: 10px;
-                 height: 100%;
-                 width: 0;
-                 position: fixed;
-                 top: 0;
-                 right: 0;
-                 background-color: white; /* Dunkelblau */
-                 overflow-x: hidden;
-                 transition: 0.5s;
-                 padding-top: 80px;
-                 z-index: 10000;
-             }
-     
-             .menuBtn {
-                 padding: 10px 10px;
-                 text-decoration: none;
-                 margin-bottom: 16px;
-                 border: none;
-                 margin-right: 28px;
-                 margin-left: 10px;
-                 font-size: 1.2rem;
-                 border-bottom: 1.2px solid rgb(163, 163, 163);
-                 color: black;
-                 display: block;
-                 transition: 0.3s;
-                 font-family: sans-serif;
-             }
-     
-             .side-menu a:hover {
-                 background-color: #d7dadc86; /* Hellere Variante von Dunkelblau */
-             }  
-     
-             .close-btn {
-                 position: absolute;
-                 top: 20px;
-                 right: 25px;
-                 font-size: 36px;
-                 margin-left: 50px;
-                 color: black;
-                 cursor: pointer;
-             }
-     
-
-
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 15;
-        }
-
-        .overlay.active {
-            display: block;
-        }
-
-
-  /* Menü */
-  .menu {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            margin-right: 20px;
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-            top: 25px;
-        }
-
-           /* Overlay for dimming background */
-           .overlay {
-            display: none; /* Hidden by default */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-            z-index: 1000; /* Below side menu but above other content */
-        }
-
-        .overlay.active {
-            display: block; /* Show overlay when active */
-        }
-
-        .menu-line {
-            width: 25px;
-            height: 3px;
-            background-color: #0e0e0e; /* Dunkelblau */
-            margin: 4px 0;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            
-        }
-
-        .menu-line:hover {
-            background-color: #1c8cd7; /* Hellere Variante von Dunkelblau */
-        }
-
-
         .form-container {
             width: 90%;
             max-width: 436px;
-            margin-top: 30px;
+            min-width: 260px;
             background-color: white;
             padding: 20px;
             border-radius: 10px;
@@ -209,10 +31,10 @@
             z-index: 1;
         }
 
+
         .form-group {
             margin-bottom: 15px;
-
-
+           
         }
 
         .form-group label {
@@ -231,15 +53,12 @@
             background-color: #fff;
             font-size: 1em;
             margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
 
         .form-group input::placeholder {
             font-style: italic;
             color: #999;
-        }
-
-        h4 {
-            font-size: larger;
         }
 
         .form-group textarea::placeholder {
@@ -271,6 +90,7 @@
             margin-right: 10px;
             position: relative;
             cursor: pointer;
+            transition: 0.3s ease-in-out;
         }
 
         .form-group .checkbox-label input[type="checkbox"]:checked + span::before {
@@ -281,12 +101,17 @@
             transform: translate(-50%, -50%);
             color: white;
             font-size: 14px;
+            transition: 0.3s ease-in-out;
         }
 
         .form-group .checkbox-label input[type="checkbox"]:checked + span {
-            background-color: #213d6df3;
-            border-color: rgb(28, 28, 28);
-           
+            background-color: rgb(45, 46, 98);
+            border-color: rgb(55, 60, 61);
+            
+        }
+
+        .form-group textarea input{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
 
         .social-icons {
@@ -322,26 +147,34 @@
             padding: 8px 25px;
             font-size: smaller;
             text-align: center;
-            border-radius: 12px;
+            border-radius: 8px;
             color: white;
-            border: 1.6px solid #213d6df3 ;
+            border: 1.6px solid  #18253df3 ;
+            
             font-size: larger;
-            background-color:  #213d6df3 ;
+            background-color: #18253df3 ;
             cursor: not-allowed;
             opacity: 0.5;
             text-align: center;
 
         }
 
+        .btn-submit:active:hover{
+            background-color: #0e1930;
+            transition: 0.32s ease-in-out;
+        }
+
         .btn-submit.enabled {
             cursor: pointer;
             opacity: 1;
+            background-color:  #172a49f3 ;
             color: white;
-            background-color:  #3c4f70f3 ;
+            transition: 0.3s ease-in-out;
         }
 
         .btn-submit:active {
             animation: clickAnimation 0.2s ease;
+            transition: 0.3s ease-in-out;
         }
 
         @keyframes clickAnimation {
@@ -396,7 +229,7 @@
         .circle-animation {
             width: 0;
             height: 0;
-            border: 5.5px solid #3c4f70f3 ; /* Dickerer Kreis */
+            border: 5.5px solid #213d6df3 ; /* Dickerer Kreis */
             border-radius: 50%;
             opacity: 0;
             position: relative;
@@ -409,11 +242,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 4em; /* Größerer Haken */
-            color: rgb(63, 189, 231);
-        }
-
-        .stern {
-            color: red;
+            color:  #213d6df3 ;
         }
 
         @keyframes expandCircle {
@@ -455,10 +284,12 @@
         .loading-dots div {
             width: 15px;
             height: 15px;
-            background-color: rgb(63, 189, 231);
+            background-color:  #213d6df3 ;
             border-radius: 50%;
             animation: loading 1s infinite;
         }
+
+
 
         .loading-dots div:nth-child(1) {
             animation-delay: 0s;
@@ -480,20 +311,25 @@
                 transform: scale(1.5);
             }
         }
-        .ja{
-            color: rgb(22, 15, 118);
+
+        .stern {
+            color: red;
         }
+        .ja {
+            color: rgb(47, 65, 102);
+        }
+
     </style>
 </head>
 <body>
-
-
+   
     <div class="form-container">
         <h4>Bitte füllen Sie das Formular aus:</h4>
-        <form id="social-media-form">
+        <form id="social-media-form" method="POST" action="https://script.google.com/macros/s/AKfycbyCxHDF80jAJDjF95duaw7NPANS-vIvO_zg3AdBWtbvNtQSHJ_FY-l5_iIMkDBHrXjv/exec">
             <div class="form-group">
-                <label for="platform">Wählen Sie die Plattform auf der das Influencer-Marketing statt finden soll:</label>
-                <select id="platform" name="platform">
+                <label for="platform">Wählen Sie Ihre Plattform:</label>
+                <select id="platform" name="platform" required>
+                    <option value="">- Wählen Sie eine Plattform -</option>
                     <option value="instagram">Instagram</option>
                     <option value="facebook">Facebook</option>
                     <option value="tiktok">TikTok</option>
@@ -501,42 +337,54 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="accountName"><a class="stern" >*</a>Vor und Nachname:</label>
-                <input type="text" id="accountName" name="Name" placeholder="Name">
+                <label for="accountName"><a class="stern">*</a> Account Name:</label>
+                <input type="text" id="accountName" name="accountName" placeholder="@accountname" required>
             </div>
             <div class="form-group">
-                <label for="email"><a class="stern" >*</a>Email Adresse:</label>
-                <input type="email" id="email" name="email" placeholder="Email">
+                <label for="startupName"><a class="stern">*</a>Startup/Unternehmen Name:</label>
+                <input type="text" id="startupName" name="startupName" placeholder="Startup/Unternehmen Name..." required>
             </div>
             <div class="form-group">
-                <label for="message"><a class="stern" >*</a>Beschreiben sie ihr Produkt:</label>
-                <textarea id="message" name="message" placeholder="Beschreibung..."></textarea>
+                <label for="email"><a class="stern">*</a> Email Adresse:</label>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="price" > <a class="stern">*</a> Bietender Preis für Leistung:</label>
+                <input type="text" id="price" name="price" placeholder="Preis für Beitrag/Story..."required>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Beschreiben sie ihr Produkt:</label>
+                <textarea id="message" name="message" placeholder="Text..." ></textarea>
             </div>
             <div class="form-group">
                 <label class="checkbox-label">
-                    <input type="checkbox" id="agb" name="agb">
+                    <input type="checkbox" id="agb" name="agb" required>
                     <span></span>
-                    <span>  Ja, ich bin mit den <u onclick="location.href('agb.html')"  class="ja">allgemeinen Geschäftsbedingungen</u> und den <u  onclick="location.href('agb.html')"  class="ja">Datenschutzbestimmungen</u> einverstanden.</span>
+                    <span>
+                        Ja, ich bin mit den <u onclick="location.href='agb.html'" class="ja">allgemeinen Geschäftsbedingungen</u> und den <u onclick="location.href='agb.html'" class="ja">Datenschutzbestimmungen</u> einverstanden.
+                    </span>
                 </label>
             </div>
             <div class="form-group">
-                <button class="btn-submit" type="button" id="submitBtn"><strong>Bestätigen</strong></button>
+                <button id="submitBtn" type="submit" class="btn-submit" disabled><strong>Bestätigen</strong></button>
             </div>
             <div class="error-message" id="errorMessage">Bitte füllen Sie alle erforderlichen Felder aus und akzeptieren Sie die AGBs.</div>
         </form>
     </div>
-
-    <div class="overlay" id="overlay">
+    
+    <div class="overlay" id="overlay" style="display: none;">
         <div class="loading-dots" id="loadingDots">
             <div></div>
             <div></div>
             <div></div>
         </div>
-        <div class="circle-animation" id="circleAnimation">
-            <div class="checkmark" id="checkmark">✔</div>
+        <div class="circle-animation" id="circleAnimation" style="display: none;">
+            <div class="checkmark" id="checkmark" style="display: none;">✔</div>
         </div>
     </div>
-
+    
     <svg class="bubbles" xmlns="http://www.w3.org/2000/svg">
         <circle class="bubble" cx="10%" cy="90%" r="20" />
         <circle class="bubble" cx="25%" cy="85%" r="15" />
@@ -545,106 +393,86 @@
         <circle class="bubble" cx="70%" cy="95%" r="18" />
         <circle class="bubble" cx="85%" cy="90%" r="12" />
     </svg>
-
+    
+    
+   
     <script>
-
-document.getElementById('menu').addEventListener('click', function() {
-            document.getElementById('sideMenu').style.width = '250px';
-            overlay.classList.toggle('active');
-        });
+       
+       const form = document.getElementById('social-media-form');
+        const submitBtn = document.getElementById('submitBtn');
+        const overlay = document.getElementById('overlay');
+        const loadingDots = document.getElementById('loadingDots');
+        const circleAnimation = document.getElementById('circleAnimation');
+        const checkmark = document.getElementById('checkmark');
     
-        overlay.addEventListener('click', function() {
-                sideMenu.classList.remove('active');
-                overlay.classList.remove('active');
-            });
+        // Aktiviert den Button, wenn alle Felder ausgefüllt sind
+        form.addEventListener('input', function () {
+            const platform = form.platform.value.trim();
+            const accountName = form.accountName.value.trim();
+            const email = form.email.value.trim();
+            const agb = form.agb.checked;
     
-        closeBtn.addEventListener('click', function() {
-            document.getElementById('sideMenu').style.width = '0';
-                overlay.classList.remove('active');
-            });
-    
-    
-        // Event-Listener für die Links im Side-Menü
-        document.querySelectorAll('.menuBtn').forEach(function(btn) {
-            btn.addEventListener('click', function(event) {
-                event.preventDefault(); // Verhindert das Standard-Verhalten des Links
-                var target = this.getAttribute('data-target');
-                
-                // Einfahren des Side-Menüs
-                document.getElementById('sideMenu').style.width = '0';
-                
-                // Zeige die Ladeanimation
-                document.getElementById('loadingOverlay').style.display = 'flex';
-                
-                // Navigiere zur Zielseite nach einer kurzen Verzögerung (hier 0.5 Sekunden)
-                setTimeout(function() {
-                    window.location.href = target;
-                }, 300);
-            });
-         });
-    
-
-
-        document.getElementById('submitBtn').addEventListener('click', function() {
-            const platform = document.getElementById('platform').value;
-            const accountName = document.getElementById('accountName').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const agb = document.getElementById('agb').checked;
-            const errorMessage = document.getElementById('errorMessage');
-
             if (platform && accountName && email && agb) {
-                errorMessage.style.display = 'none';
-                // Trigger the loading animation
-                const overlay = document.getElementById('overlay');
-                const loadingDots = document.getElementById('loadingDots');
-                const circleAnimation = document.getElementById('circleAnimation');
-                const checkmark = document.getElementById('checkmark');
-
-                overlay.style.display = 'flex';
-                loadingDots.style.display = 'flex';
-
-                setTimeout(() => {
-                    loadingDots.style.display = 'none';
-                    circleAnimation.style.animation = 'expandCircle 1s forwards';
-                    checkmark.style.animation = 'showCheckmark 1.6s forwards';
-                    checkmark.style.display = 'block';  // Ensure checkmark is displayed for animation
-
-                    // Wait for the checkmark animation to finish before redirecting
-                    setTimeout(() => {
-                        window.location.href = 'profil.html';
-                    }, 2000); // 2 seconds delay after checkmark animation
-                }, 1000); // 1 second delay for loading animation
+                submitBtn.disabled = false;
+                submitBtn.classList.add('enabled');
             } else {
-                errorMessage.style.display = 'block';
+                submitBtn.disabled = true;
+                submitBtn.classList.remove('enabled');
             }
         });
-
-        const inputs = document.querySelectorAll('#social-media-form input, #social-media-form select');
-        inputs.forEach(input => {
-            input.addEventListener('input', function() {
-                const platform = document.getElementById('platform').value;
-                const accountName = document.getElementById('accountName').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const agb = document.getElementById('agb').checked;
-                const submitBtn = document.getElementById('submitBtn');
-
-                if (platform && accountName && email && agb) {
-                    submitBtn.classList.add('enabled');
-                    submitBtn.style.cursor = 'pointer';
-                    submitBtn.disabled = false;
-                } else {
-                    submitBtn.classList.remove('enabled');
-                    submitBtn.style.cursor = 'not-allowed';
-                    submitBtn.disabled = true;
-                }
-            });
+    
+        // Beim Absenden des Formulars
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+    
+            const formData = new FormData(form);
+    
+            // Ladeanimation starten
+            overlay.style.display = 'flex';
+            loadingDots.style.display = 'flex';
+    
+            // Daten an Apps Script senden
+            fetch('https://script.google.com/macros/s/AKfycby3q_fd2HtPlfMY-PtTQnGULstfUboNudkOP1AR5ZX7jOW9Ts-cVqywYAklAiWbbTUK/exec', {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Ladeanimation fortsetzen und zu profil.html weiterleiten
+                    loadingDots.style.display = 'none';
+                    circleAnimation.style.display = 'block';
+                    circleAnimation.style.animation = 'expandCircle 1s forwards';
+                    checkmark.style.display = 'block';
+                    checkmark.style.animation = 'showCheckmark 1.6s forwards';
+    
+                    // Weiterleitung nach der Animation
+                    setTimeout(() => {
+                        window.location.href = 'profil.html';
+                    }, 1000);
+                })
+                .catch(error => {
+                    // Selbst wenn ein Fehler auftritt, leite weiter
+                    console.error('Fehler beim Speichern:', error);
+    
+                    // Animation starten, bevor weitergeleitet wird
+                    loadingDots.style.display = 'none';
+                    circleAnimation.style.display = 'block';
+                    circleAnimation.style.animation = 'expandCircle 1s forwards';
+                    checkmark.style.display = 'block';
+                    checkmark.style.animation = 'showCheckmark 1.6s forwards';
+    
+                    // Weiterleitung nach der Animation
+                    setTimeout(() => {
+                        window.location.href = 'profil.html';
+                    }, 1000);
+                });
         });
+
+
     </script>
+
 </body>
 </html>
-
-
-
 
 
 

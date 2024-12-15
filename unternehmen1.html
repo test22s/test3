@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auswahlseite</title>
     <style>
-    
-    body, html {
+        body, html {
             margin: 0;
             padding: 0;
             height: 100%;
@@ -18,6 +17,7 @@
             background-color: white;
             overflow: hidden;
             position: relative;
+            
         }
 
         header {
@@ -27,7 +27,7 @@
             justify-content: space-between;
             align-items: center;
             background-color: white;
-            
+           
             position: fixed;
             top: 0;
             z-index: 10;
@@ -175,7 +175,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+             /* Semi-transparent black */
             z-index: 1000; /* Below side menu but above other content */
         }
 
@@ -198,11 +198,12 @@
         }
 
 
-
-
+        .content{
+            max-width: 200px;
+        }
 
         h4 {
-            margin-top: 100px; /* Adjusted to account for fixed header */
+            margin-top: 20px;
             color: black;
             font-size: 23px;
             text-align: center;
@@ -215,35 +216,70 @@
             z-index: 1;
         }
 
-        .btn, .btn2 {
+        .btn1 {
             position: relative;
             padding: 7px;
-            padding: 7px 12px;
-            margin: 4px 15px;
+            margin-left: 4px;
+            margin-right: 15px;
             size: 0.8em;
             cursor: pointer;
             border: 1.5px solid black;
             border-radius: 20px;
+            
+            background-color: white;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+        .btn2 {
+            position: relative;
+            padding: 7px;
+            margin-left: 15px;
+           margin-right: 4px;
+            size: 0.8em;
+            cursor: pointer;
+            border: 1.5px solid black;
+            border-radius: 20px;
+        
             background-color: white;
             text-align: center;
             transition: background-color 0.3s ease;
         }
 
-        .btn:hover, .btn2:hover {
-            transform: scale(1);
+        .btn1:hover {
+            transform: scale(1.05);
+            transition: 0.324s ease-in-out;
         }
 
-        .btn:active, .btn2:active {
+        .btn1:active {
+            animation: clickAnimation 0.2s ease;
+        }
+        .btn2:hover {
+            transform: scale(1.05);
+            transition: 0.324s ease-in-out;
+        }
+
+        .btn2:active {
             animation: clickAnimation 0.2s ease;
         }
 
+
         @keyframes clickAnimation {
-            0% { transform: scale(1); }
-            50% { transform: scale(0.95); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(0.95);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
 
-        .btn.selected, .btn2.selected {
+        .btn1.selected {
+            background-color: lightgray;
+        }
+
+        .btn2.selected {
             background-color: lightgray;
         }
 
@@ -263,7 +299,11 @@
             visibility: hidden;
         }
 
-        .btn.selected .checkmark, .btn2.selected .checkmark {
+        .btn1.selected .checkmark {
+            visibility: visible;
+        }
+
+        .btn2.selected .checkmark {
             visibility: visible;
         }
 
@@ -275,7 +315,8 @@
             text-align: center;
             border-radius: 8px;
             color: white;
-            border: 1.6px solid #213d6df3 ;
+            border: 1.5px solid #213d6df3;
+            
             background-color: #213d6df3 ;
             cursor: not-allowed;
             opacity: 0.5;
@@ -284,6 +325,10 @@
         .btn-weiter.enabled {
             cursor: pointer;
             opacity: 1;
+        }
+
+        .btn-weiter:hover{
+            background-color: #0e0e0e;
         }
 
         .bubbles {
@@ -297,14 +342,24 @@
         }
 
         .bubble {
-            fill: #213d6df3 ;
+            fill:  #213d6df3 ;
             opacity: 0.6;
             animation: float 6s ease-in-out infinite;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); opacity: 0.6; }
-            50% { transform: translateY(-20px); opacity: 0.9; }
+            0% {
+                transform: translateY(0);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-20px);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 0.6;
+            }
         }
 
         .circle {
@@ -313,17 +368,20 @@
             left: 50%;
             width: 100px;
             height: 100px;
-            background-color: #213d6df3 ;
+            margin: 0;
+            background-color: #213d6df3;
             border-radius: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-100%);
             display: none;
             z-index: 2;
+
+           
         }
 
         .loading-animation {
             position: absolute;
-            top: 50%;
-            left: 50%;
+             top: 50%;
+             left: 50%;
             transform: translate(-50%, -50%);
             display: flex;
             justify-content: center;
@@ -339,19 +397,46 @@
             animation: loading 1s infinite;
         }
 
-        .loading-animation .dot:nth-child(1) { animation-delay: 0s; }
-        .loading-animation .dot:nth-child(2) { animation-delay: 0.1s; }
-        .loading-animation .dot:nth-child(3) { animation-delay: 0.2s; }
+        .loading-animation .dot:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .loading-animation .dot:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .loading-animation .dot:nth-child(3) {
+            animation-delay: 0.2s;
+        }
 
         @keyframes loading {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.5); }
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.5);
+            }
         }
 
         @keyframes expandCircle {
-            0% { width: 100px; height: 100px; bottom: -50px; transform: translateX(-50%); }
-            50% { width: 500px; height: 500px; bottom: calc(50% - 250px); transform: translateX(-50%); }
-            100% { width: 3000px; height: 3000px; bottom: calc(50% - 1500px); transform: translateX(-50%); }
+            0% {
+                width: 100px;
+                height: 100px;
+                bottom: -50px;
+                transform: translateX(-50%);
+            }
+            50% {
+                width: 500px;
+                height: 500px;
+                bottom: calc(50% - 250px);
+                transform: translateX(-50%);
+            }
+            100% {
+                width: 3000px;
+                height: 3000px;
+                bottom: calc(50% - 1500px);
+                transform: translateX(-50%);
+            }
         }
 
         .fade-out {
@@ -359,25 +444,34 @@
         }
 
         @keyframes fadeOut {
-            0% { opacity: 1; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
         }
 
         @media (max-width: 768px) {
             .container {
                 gap: 5px;
             }
-        }
 
-        .content {
-            max-width: 200px;
+           
         }
-
     </style>
 </head>
 <body>
 
-    <div class="overlay" id="overlay"></div>
+    <div id="circle" class="circle">
+        <div class="loading-animation">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+ 
+    
     <header>
         <h5> OSL </h5>
         <div class="menu" id="menu">
@@ -389,7 +483,7 @@
         
     <div id="sideMenu" class="side-menu">
     
-     
+        <div class="overlay" id="overlay"></div>
     
         <span class="close-btn" id="closeBtn">&times;</span>
         <a class="menuBtn" href="#" data-target="acc.html"><strong>Account</strong></a>
@@ -400,113 +494,128 @@
     
     </div>
 
-
-
-    <div id="content">
-        <h4>In welchem Themenbereich liegt das Produkt das Sie vermarkten wollen?</h4>
-        <div class="container">
-            <div class="btn2" onclick="toggleSelection(this)"><strong>Fitness</strong><div class="checkmark">✔</div></div>
-            <div class="btn" onclick="toggleSelection(this)"><strong>Beauty</strong><div class="checkmark">✔</div></div>
-            <div class="btn2" onclick="toggleSelection(this)"><strong>Mode</strong><div class="checkmark">✔</div></div>
-            <div class="btn" onclick="toggleSelection(this)"><strong>Technik</strong><div class="checkmark">✔</div></div>
-            <div class="btn2" onclick="toggleSelection(this)"><strong>Dienstleistung</strong><div class="checkmark">✔</div></div>
-            <div class="btn" onclick="toggleSelection(this)"><strong>Medien</strong><div class="checkmark">✔</div></div>
-            <div class="btn2" onclick="toggleSelection(this)"><strong>Personen</strong><div class="checkmark">✔</div></div>
-            <div class="btn" onclick="toggleSelection(this)"><strong>Filme/Bücher</strong><div class="checkmark">✔</div></div>
-        </div>
-    </div>
-
-    <button id="btn-weiter" class="btn btn-weiter" disabled><strong>Weiter</strong></button>
-
-    <div id="circle" class="circle">
-        <div class="loading-animation">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-        </div>
-    </div>
-
+ 
    
-
+    <div id="content">
+        <h4>In welchem Themenbereich liegt das Produkt das sie bewerben möchten?</h4>
+        <form method="POST" id="influencer-data" action="https://script.google.com/macros/s/AKfycby3q_fd2HtPlfMY-PtTQnGULstfUboNudkOP1AR5ZX7jOW9Ts-cVqywYAklAiWbbTUK/exec">
+            <div class="container">
+                <button type="button" class="btn2" name="theme" value="fitness" onclick="selectTheme(this)">Fitness<div class="checkmark">✔</div></button>
+                <button type="button" class="btn1" name="theme" value="beauty" onclick="selectTheme(this)">Beauty<div class="checkmark">✔</div></button>
+                <button type="button" class="btn2" name="theme" value="mode" onclick="selectTheme(this)">Mode<div class="checkmark">✔</div></button>
+                <button type="button" class="btn1" name="theme" value="technik" onclick="selectTheme(this)">Technik<div class="checkmark">✔</div></button>
+                <button type="button" class="btn2" name="theme" value="dienstleistung" onclick="selectTheme(this)">Dienstleistung<div class="checkmark">✔</div></button>
+                <button type="button" class="btn1" name="theme" value="medien" onclick="selectTheme(this)">Medien<div class="checkmark">✔</div></button>
+                <button type="button" class="btn2" name="theme" value="personen" onclick="selectTheme(this)">Personen<div class="checkmark">✔</div></button>
+                <button type="button" class="btn1" name="theme" value="filme-buecher" onclick="selectTheme(this)">Filme/Bücher<div class="checkmark">✔</div></button>
+            </div>
+            <input type="hidden" id="selected-theme" name="theme" value="">
+        </form>
+    </div>
+    
+    <button id="btn-weiter" class="btn btn-weiter" disabled><strong>Weiter</strong></button>
+    
+    <div class="overlay" id="overlay" style="display: none;">
+        <div class="loading-dots" id="loadingDots">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="circle-animation" id="circleAnimation" style="display: none;">
+            <div class="checkmark" id="checkmark" style="display: none;">✔</div>
+        </div>
+    </div>
+    
     <script>
-
-document.getElementById('menu').addEventListener('click', function() {
-            document.getElementById('sideMenu').style.width = '250px';
-            overlay.classList.toggle('active');
-        });
+        const form = document.getElementById('influencer-data');
+        const weiterButton = document.getElementById('btn-weiter');
+        const overlay = document.getElementById('overlay');
+        const loadingDots = document.getElementById('loadingDots');
+        const circleAnimation = document.getElementById('circleAnimation');
+        const checkmark = document.getElementById('checkmark');
     
-        overlay.addEventListener('click', function() {
-                sideMenu.classList.remove('active');
-                overlay.classList.remove('active');
-            });
+        function selectTheme(button) {
+            // Entferne 'selected' von allen Buttons
+            document.querySelectorAll('.btn1, .btn2').forEach(btn => btn.classList.remove('selected'));
+            // Markiere den ausgewählten Button
+            button.classList.add('selected');
     
-        closeBtn.addEventListener('click', function() {
-            document.getElementById('sideMenu').style.width = '0';
-                overlay.classList.remove('active');
-            });
+            // Setze den Wert des ausgewählten Buttons im versteckten Input-Feld
+            document.getElementById('selected-theme').value = button.value;
     
-    
-        // Event-Listener für die Links im Side-Menü
-        document.querySelectorAll('.menuBtn').forEach(function(btn) {
-            btn.addEventListener('click', function(event) {
-                event.preventDefault(); // Verhindert das Standard-Verhalten des Links
-                var target = this.getAttribute('data-target');
-                
-                // Einfahren des Side-Menüs
-                document.getElementById('sideMenu').style.width = '0';
-                
-                // Zeige die Ladeanimation
-                document.getElementById('loadingOverlay').style.display = 'flex';
-                
-                // Navigiere zur Zielseite nach einer kurzen Verzögerung (hier 0.5 Sekunden)
-                setTimeout(function() {
-                    window.location.href = target;
-                }, 300);
-            });
-         });
-    
-    
-    
-    
-
-        function toggleSelection(element) {
-            element.classList.toggle('selected');
-            const selectedButtons = document.querySelectorAll('.btn.selected');
-            const btnWeiter = document.getElementById('btn-weiter');
-            if (selectedButtons.length > 0) {
-                btnWeiter.disabled = false;
-                btnWeiter.classList.add('enabled');
-            } else {
-                btnWeiter.disabled = true;
-                btnWeiter.classList.remove('enabled');
-            }
+            // Aktiviere den Weiter-Button
+            weiterButton.disabled = false;
+            weiterButton.classList.add('enabled');
         }
-
-        function toggleSelection(element) {
-            element.classList.toggle('selected');
-            const selectedButtons = document.querySelectorAll('.btn2.selected');
-            const btnWeiter = document.getElementById('btn-weiter');
-            if (selectedButtons.length > 0) {
-                btnWeiter.disabled = false;
-                btnWeiter.classList.add('enabled');
-            } else {
-                btnWeiter.disabled = true;
-                btnWeiter.classList.remove('enabled');
-            }
-        }
-
-        document.getElementById('btn-weiter').addEventListener('click', function() {
+    
+        weiterButton.addEventListener('click', function () {
             if (!this.disabled) {
                 const content = document.getElementById('content');
-                const circle = document.getElementById('circle');
+                const circle = document.getElementById('circle'); // Stelle sicher, dass das Element existiert
+    
                 content.classList.add('fade-out');
-                circle.style.display = 'block';
-                circle.style.animation = 'expandCircle 1s forwards';
-                circle.addEventListener('animationend', function() {
-                    window.location.href = 'unternehmen2.html';
-                });
+                if (circle) {
+                    circle.style.display = 'block';
+                    circle.style.animation = 'expandCircle 1s forwards';
+    
+                    circle.addEventListener('animationend', function () {
+                        // Verhindere das Absenden des Formulars sofort
+                        submitForm();
+                    });
+                } else {
+                    submitForm(); // Formular sofort absenden
+                }
             }
         });
+    
+        // Funktion zum Absenden des Formulars über fetch
+        function submitForm() {
+            // Ladeanimation starten
+            overlay.style.display = 'flex';
+            loadingDots.style.display = 'flex';
+    
+            // Daten an das Google Apps Script senden
+            const formData = new FormData(form);
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Ladeanimation fortsetzen
+                loadingDots.style.display = 'none';
+                circleAnimation.style.display = 'block';
+                circleAnimation.style.animation = 'expandCircle 1s forwards';
+                checkmark.style.display = 'block';
+                checkmark.style.animation = 'showCheckmark 1.6s forwards';
+    
+                // Weiterleitung nach der Animation
+                setTimeout(() => {
+                    window.location.href = 'unternehmen2.html';  // Weiterleitung zu influencer2-1.html
+                }, 100); // Verzögerung von 1 Sekunde, um die Animation zu beenden
+            })
+            .catch(error => {
+                console.error('Fehler beim Absenden:', error);
+    
+                // Selbst wenn ein Fehler auftritt, leite weiter
+                loadingDots.style.display = 'none';
+                circleAnimation.style.display = 'block';
+                circleAnimation.style.animation = 'expandCircle 1s forwards';
+                checkmark.style.display = 'block';
+                checkmark.style.animation = 'showCheckmark 1.6s forwards';
+    
+                // Weiterleitung nach der Animation
+                setTimeout(() => {
+                    window.location.href = 'unternehmen2.html';  // Weiterleitung zu influencer2-1.html
+                }, 100); // Verzögerung von 1 Sekunde, um die Animation zu beenden
+            });
+        }
     </script>
+    
+    
+   
+    
+  
+
 </body>
 </html>

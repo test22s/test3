@@ -35,9 +35,10 @@
 
         .container {
             display: flex;
+
             align-items: center;
             justify-content: center;
-            flex-direction: column;
+           
         }
 
         .btn {
@@ -62,7 +63,7 @@
             background-color: white;
             color: black;
             border: 1.4px solid black;
-            border-radius: 20px;
+            border-radius: 20px; 
             font-size: 17px;
             size: 1.3em;
             font-weight: 600;
@@ -70,6 +71,7 @@
 
         .btn:hover {
             transform: scale(1.05);
+            transition: 0.3s ease-in-out;
         }
 
         .btn:active {
@@ -276,8 +278,8 @@
     <div class="message"> <strong> <u> OSL </u> </strong> </div>
     <div class="container">
         <h2> Was trifft auf sie zu ? </h2>
-        <button class="btn btn-left" onclick="triggerAnimation('newpage.html')"> <strong> Influencer </strong> </button>
-        <button class="btn btn-right" onclick="triggerAnimation('unternehmen1.html')"> <strong> Unternehmen </strong> </button>
+        <button class="btn btn-left" name="influencer" onclick="triggerAnimation('newpage.html')"> <strong> Influencer </strong> </button>
+        <button class="btn btn-right" name="unternehmen" onclick="triggerAnimation('unternehmen1.html')"> <strong> Unternehmen </strong> </button>
     </div>
     <div class="animation-overlay" id="animationOverlay"></div>
   
@@ -312,7 +314,7 @@
 
             setTimeout(() => {
                 window.location.href = targetUrl;
-            }, 500);  // Wait for 0.5 seconds to let the animation play before redirecting
+            }, 1000);  // Wait for 0.5 seconds to let the animation play before redirecting
         }
 
         document.getElementById('btn-left').addEventListener('click', function() {
@@ -348,8 +350,9 @@
             // Navigiere zur Index2-Seite nach einer kurzen Verzögerung (hier 0.5 Sekunden)
             setTimeout(function() {
                 window.location.href = targetUrl;
-            }, 500);
+            }, 1000);
         });
     </script>
 </body>
 </html>
+

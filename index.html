@@ -51,24 +51,27 @@
             
             padding: 10px 20px;
             background-color: #0e0e0e; /* Dunkelblau */
-            
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             color: white;
             font-size: 1.36rem;
             text-decoration: none;
             border-radius: 22px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease-in-out;
             cursor: pointer;
             text-align: center;
             margin-top: 30px;
-            
+            transition: 0.3s ease-in-out;
         }
 
         .btn-start:hover {
-            background: linear-gradient(-229deg, #75a9d7,  #31589bf3 ); /* Hellere Variante von Dunkelblau */
+            transition: 0.3s ease-in-out;
+            background: linear-gradient(-229deg, #1a5282,  #172845f3 ); /* Hellere Variante von Dunkelblau */
         }
 
         .btn-start:active {
-            animation: clickAnimation 0.5s ease;
+            
+            animation: clickAnimation 0.6s ease;
+
         }
 
         @keyframes clickAnimation {
@@ -116,11 +119,12 @@
         /* Blaue Bläschen */
         .bubble {
             position: absolute;
-            background: linear-gradient(-229deg, #3097c3,  #31589bf3 );/* Halbtransparentes Blau */
+            background: linear-gradient(-229deg, #1f2238,  #224689f3 );/* Halbtransparentes Blau */
             width: 20px;
             height: 20px;
             border-radius: 50%;
             animation: float 6s ease-in-out infinite alternate;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
         }
 
         @keyframes float {
@@ -274,6 +278,7 @@
 
         .menu-line:hover {
             background-color: #1c8cd7; /* Hellere Variante von Dunkelblau */
+            transition: 0.3s ease-in-out;
         }
 
         /* Side-Menü */
@@ -307,10 +312,12 @@
             display: block;
             transition: 0.3s;
             font-family: sans-serif;
+            transition: 0.3s ease-in-out;
         }
 
         .side-menu a:hover {
             background-color: #6e71724f; /* Hellere Variante von Dunkelblau */
+            transition: 0.3s ease-in-out;
         }  
 
         .close-btn {

@@ -247,6 +247,7 @@
 
         .btn1:hover {
             transform: scale(1.05);
+            transition: 0.324s ease-in-out;
         }
 
         .btn1:active {
@@ -254,6 +255,7 @@
         }
         .btn2:hover {
             transform: scale(1.05);
+            transition: 0.324s ease-in-out;
         }
 
         .btn2:active {
@@ -488,105 +490,129 @@
     
     </div>
 
-
+ 
+   
     <div id="content">
         <h4>In welchem Themenbereich würden Sie gerne Werbung machen?</h4>
-        <div class="container">
-            <div class="btn2" onclick="toggleSelection(this)"><strong>Fitness</strong><div class="checkmark">✔</div></div>
-            <div class="btn1" onclick="toggleSelection(this)"><strong>Beauty</strong><div class="checkmark">✔</div></div>
-            <div class="btn2" onclick="toggleSelection(this)"><strong>Mode</strong><div class="checkmark">✔</div></div>
-            <div class="btn1" onclick="toggleSelection(this)"><strong>Technik</strong><div class="checkmark">✔</div></div>
-            <div class="btn2" onclick="toggleSelection(this)"><strong>Dienstleistung</strong><div class="checkmark">✔</div></div>
-            <div class="btn1" onclick="toggleSelection(this)"><strong>Medien</strong><div class="checkmark">✔</div></div>
-            <div class="btn2" onclick="toggleSelection(this)"><strong>Personen</strong><div class="checkmark">✔</div></div>
-            <div class="btn1" onclick="toggleSelection(this)"><strong>Filme/Bücher</strong><div class="checkmark">✔</div></div>
+        <form method="POST" id="influencer-data" action="https://script.google.com/macros/s/AKfycby3q_fd2HtPlfMY-PtTQnGULstfUboNudkOP1AR5ZX7jOW9Ts-cVqywYAklAiWbbTUK/exec">
+            <div class="container">
+                <button type="button" class="btn2" name="theme" value="fitness" onclick="selectTheme(this)">Fitness<div class="checkmark">✔</div></button>
+                <button type="button" class="btn1" name="theme" value="beauty" onclick="selectTheme(this)">Beauty<div class="checkmark">✔</div></button>
+                <button type="button" class="btn2" name="theme" value="mode" onclick="selectTheme(this)">Mode<div class="checkmark">✔</div></button>
+                <button type="button" class="btn1" name="theme" value="technik" onclick="selectTheme(this)">Technik<div class="checkmark">✔</div></button>
+                <button type="button" class="btn2" name="theme" value="dienstleistung" onclick="selectTheme(this)">Dienstleistung<div class="checkmark">✔</div></button>
+                <button type="button" class="btn1" name="theme" value="medien" onclick="selectTheme(this)">Medien<div class="checkmark">✔</div></button>
+                <button type="button" class="btn2" name="theme" value="personen" onclick="selectTheme(this)">Personen<div class="checkmark">✔</div></button>
+                <button type="button" class="btn1" name="theme" value="filme-buecher" onclick="selectTheme(this)">Filme/Bücher<div class="checkmark">✔</div></button>
+            </div>
+            <input type="hidden" id="selected-theme" name="theme" value="">
+        </form>
+    </div>
+    
+    <button id="btn-weiter" class="btn btn-weiter" disabled><strong>Weiter</strong></button>
+    
+    <div class="overlay" id="overlay" style="display: none;">
+        <div class="loading-dots" id="loadingDots">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="circle-animation" id="circleAnimation" style="display: none;">
+            <div class="checkmark" id="checkmark" style="display: none;">✔</div>
         </div>
     </div>
-
-    <button id="btn-weiter" class="btn btn-weiter" disabled ><strong>Weiter</strong></button>
-
-   
-
-  
-
+    
     <script>
-
-document.getElementById('menu').addEventListener('click', function() {
-            document.getElementById('sideMenu').style.width = '250px';
-            overlay.classList.toggle('active');
-        });
+        const form = document.getElementById('influencer-data');
+        const weiterButton = document.getElementById('btn-weiter');
+        const overlay = document.getElementById('overlay');
+        const loadingDots = document.getElementById('loadingDots');
+        const circleAnimation = document.getElementById('circleAnimation');
+        const checkmark = document.getElementById('checkmark');
     
-        overlay.addEventListener('click', function() {
-                sideMenu.classList.remove('active');
-                overlay.classList.remove('active');
-            });
+        function selectTheme(button) {
+            // Entferne 'selected' von allen Buttons
+            document.querySelectorAll('.btn1, .btn2').forEach(btn => btn.classList.remove('selected'));
+            // Markiere den ausgewählten Button
+            button.classList.add('selected');
     
-        closeBtn.addEventListener('click', function() {
-            document.getElementById('sideMenu').style.width = '0';
-                overlay.classList.remove('active');
-            });
+            // Setze den Wert des ausgewählten Buttons im versteckten Input-Feld
+            document.getElementById('selected-theme').value = button.value;
     
-    
-        // Event-Listener für die Links im Side-Menü
-        document.querySelectorAll('.menuBtn').forEach(function(btn) {
-            btn.addEventListener('click', function(event) {
-                event.preventDefault(); // Verhindert das Standard-Verhalten des Links
-                var target = this.getAttribute('data-target');
-                
-                // Einfahren des Side-Menüs
-                document.getElementById('sideMenu').style.width = '0';
-                
-                // Zeige die Ladeanimation
-                document.getElementById('loadingOverlay').style.display = 'flex';
-                
-                // Navigiere zur Zielseite nach einer kurzen Verzögerung (hier 0.5 Sekunden)
-                setTimeout(function() {
-                    window.location.href = target;
-                }, 300);
-            });
-         });
-    
-
-         function toggleSelection(element) {
-            element.classList.toggle('selected');
-            const selectedButtons = document.querySelectorAll('.btn1.selected');
-            const btnWeiter = document.getElementById('btn-weiter');
-            if (selectedButtons.length > 0) {
-                btnWeiter.disabled = false;
-                btnWeiter.classList.add('enabled');
-            } else {
-                btnWeiter.disabled = true;
-                btnWeiter.classList.remove('enabled');
-            }
+            // Aktiviere den Weiter-Button
+            weiterButton.disabled = false;
+            weiterButton.classList.add('enabled');
         }
-
-        function toggleSelection(element) {
-            element.classList.toggle('selected');
-            const selectedButtons = document.querySelectorAll('.btn2.selected');
-            const btnWeiter = document.getElementById('btn-weiter');
-            if (selectedButtons.length > 0) {
-                btnWeiter.disabled = false;
-                btnWeiter.classList.add('enabled');
-            } else {
-                btnWeiter.disabled = true;
-                btnWeiter.classList.remove('enabled');
-            }
-        }
-
-        document.getElementById('btn-weiter').addEventListener('click', function() {
+    
+        weiterButton.addEventListener('click', function () {
             if (!this.disabled) {
                 const content = document.getElementById('content');
-                const circle = document.getElementById('circle');
+                const circle = document.getElementById('circle'); // Stelle sicher, dass das Element existiert
+    
                 content.classList.add('fade-out');
-                circle.style.display = 'block';
-                circle.style.animation = 'expandCircle 1s forwards';
-                circle.addEventListener('animationend', function() {
-                    window.location.href = 'influencer2-1.html';
-                });
+                if (circle) {
+                    circle.style.display = 'block';
+                    circle.style.animation = 'expandCircle 1s forwards';
+    
+                    circle.addEventListener('animationend', function () {
+                        // Verhindere das Absenden des Formulars sofort
+                        submitForm();
+                    });
+                } else {
+                    submitForm(); // Formular sofort absenden
+                }
             }
         });
-
+    
+        // Funktion zum Absenden des Formulars über fetch
+        function submitForm() {
+            // Ladeanimation starten
+            overlay.style.display = 'flex';
+            loadingDots.style.display = 'flex';
+    
+            // Daten an das Google Apps Script senden
+            const formData = new FormData(form);
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Ladeanimation fortsetzen
+                loadingDots.style.display = 'none';
+                circleAnimation.style.display = 'block';
+                circleAnimation.style.animation = 'expandCircle 1s forwards';
+                checkmark.style.display = 'block';
+                checkmark.style.animation = 'showCheckmark 1.6s forwards';
+    
+                // Weiterleitung nach der Animation
+                setTimeout(() => {
+                    window.location.href = 'influencer2-1.html';  // Weiterleitung zu influencer2-1.html
+                }, 400); // Verzögerung von 1 Sekunde, um die Animation zu beenden
+            })
+            .catch(error => {
+                console.error('Fehler beim Absenden:', error);
+    
+                // Selbst wenn ein Fehler auftritt, leite weiter
+                loadingDots.style.display = 'none';
+                circleAnimation.style.display = 'block';
+                circleAnimation.style.animation = 'expandCircle 1s forwards';
+                checkmark.style.display = 'block';
+                checkmark.style.animation = 'showCheckmark 1.6s forwards';
+    
+                // Weiterleitung nach der Animation
+                setTimeout(() => {
+                    window.location.href = 'influencer2-1.html';  // Weiterleitung zu influencer2-1.html
+                }, 400); // Verzögerung von 1 Sekunde, um die Animation zu beenden
+            });
+        }
     </script>
+    
+    
+   
+    
+  
+
 </body>
 </html>
 

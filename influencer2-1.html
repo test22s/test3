@@ -53,6 +53,8 @@
             background-color: #fff;
             font-size: 1em;
             margin: 0;
+            transition: 0.3s ease-in-out;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         .form-group input::placeholder {
@@ -100,11 +102,13 @@
             transform: translate(-50%, -50%);
             color: white;
             font-size: 14px;
+            transition: 0.3s ease-in-out;
         }
 
         .form-group .checkbox-label input[type="checkbox"]:checked + span {
-            background-color: lightblue;
+            background-color: rgb(34, 37, 89);
             border-color: rgb(55, 60, 61);
+            transition: 0.3s ease-in-out;
             
         }
 
@@ -143,25 +147,28 @@
             text-align: center;
             border-radius: 8px;
             color: white;
-            border: 1.6px solid  #213d6df3 ;
+            border: 1.6px solid  #1c335cf3 ;
             
             font-size: larger;
-            background-color: #213d6df3 ;
+            background-color: #1c335cf3 ;
             cursor: not-allowed;
             opacity: 0.5;
             text-align: center;
+            transition: 0.3s ease-in-out;
 
         }
 
         .btn-submit.enabled {
             cursor: pointer;
             opacity: 1;
-            background-color:  #3c4f70f3 ;
+            background-color:  #1b293ff3 ;
             color: white;
+            transition: 0.3s ease-in-out;
         }
 
         .btn-submit:active {
             animation: clickAnimation 0.2s ease;
+            transition: 0.3s ease-in-out;
         }
 
         @keyframes clickAnimation {
@@ -307,12 +314,14 @@
     </style>
 </head>
 <body>
+   
     <div class="form-container">
         <h4>Bitte füllen Sie das Formular aus:</h4>
-        <form id="social-media-form">
+        <form id="social-media-form" method="POST" action="https://script.google.com/macros/s/AKfycby3q_fd2HtPlfMY-PtTQnGULstfUboNudkOP1AR5ZX7jOW9Ts-cVqywYAklAiWbbTUK/exec">
             <div class="form-group">
                 <label for="platform">Wählen Sie Ihre Plattform:</label>
-                <select id="platform" name="platform">
+                <select id="platform" name="platform" required>
+                    <option value="">-- Wählen Sie eine Plattform --</option>
                     <option value="instagram">Instagram</option>
                     <option value="facebook">Facebook</option>
                     <option value="tiktok">TikTok</option>
@@ -320,12 +329,16 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="accountName"> <a class="stern" >*</a> Account Name:</label>
-                <input type="text" id="accountName" name="accountName" placeholder="@accountname">
+                <label for="accountName"><a class="stern">*</a> Account Name:</label>
+                <input type="text" id="accountName" name="accountName" placeholder="@accountname" required>
             </div>
             <div class="form-group">
-                <label for="email"> <a class="stern" >*</a> Email Adresse:</label>
-                <input type="email" id="email" name="email" placeholder="Email">
+                <label for="email"><a class="stern">*</a> Email Adresse:</label>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <label for="price" > <a class="stern">*</a> Bietender Preis für Leistung:</label>
+                <input type="text" id="price" name="price" placeholder="Preis für Beitrag/Story..."required>
             </div>
             <div class="form-group">
                 <label for="message">Anliegen oder Wunsch:</label>
@@ -333,29 +346,31 @@
             </div>
             <div class="form-group">
                 <label class="checkbox-label">
-                    <input type="checkbox" id="agb" name="agb">
+                    <input type="checkbox" id="agb" name="agb" required>
                     <span></span>
-                  <span>  Ja, ich bin mit den <u onclick="location.href('agb.html')"  class="ja">allgemeinen Geschäftsbedingungen</u> und den <u  onclick="location.href('agb.html')"  class="ja">Datenschutzbestimmungen</u> einverstanden.</span>
+                    <span>
+                        Ja, ich bin mit den <u onclick="location.href='agb.html'" class="ja">allgemeinen Geschäftsbedingungen</u> und den <u onclick="location.href='agb.html'" class="ja">Datenschutzbestimmungen</u> einverstanden.
+                    </span>
                 </label>
             </div>
             <div class="form-group">
-                <button  class="btn-submit" type="button" id="submitBtn"><strong>Bestätigen</strong></button>
+                <button id="submitBtn" type="submit" class="btn-submit" disabled><strong>Bestätigen</strong></button>
             </div>
             <div class="error-message" id="errorMessage">Bitte füllen Sie alle erforderlichen Felder aus und akzeptieren Sie die AGBs.</div>
         </form>
     </div>
-
-    <div class="overlay" id="overlay">
+    
+    <div class="overlay" id="overlay" style="display: none;">
         <div class="loading-dots" id="loadingDots">
             <div></div>
             <div></div>
             <div></div>
         </div>
-        <div class="circle-animation" id="circleAnimation">
-            <div class="checkmark" id="checkmark">✔</div>
+        <div class="circle-animation" id="circleAnimation" style="display: none;">
+            <div class="checkmark" id="checkmark" style="display: none;">✔</div>
         </div>
     </div>
-
+    
     <svg class="bubbles" xmlns="http://www.w3.org/2000/svg">
         <circle class="bubble" cx="10%" cy="90%" r="20" />
         <circle class="bubble" cx="25%" cy="85%" r="15" />
@@ -364,63 +379,82 @@
         <circle class="bubble" cx="70%" cy="95%" r="18" />
         <circle class="bubble" cx="85%" cy="90%" r="12" />
     </svg>
-
+    
+   
     <script>
-        document.getElementById('submitBtn').addEventListener('click', function() {
-            const platform = document.getElementById('platform').value;
-            const accountName = document.getElementById('accountName').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const agb = document.getElementById('agb').checked;
-            const errorMessage = document.getElementById('errorMessage');
-
+        const form = document.getElementById('social-media-form');
+        const submitBtn = document.getElementById('submitBtn');
+        const overlay = document.getElementById('overlay');
+        const loadingDots = document.getElementById('loadingDots');
+        const circleAnimation = document.getElementById('circleAnimation');
+        const checkmark = document.getElementById('checkmark');
+    
+        // Aktiviert den Button, wenn alle Felder ausgefüllt sind
+        form.addEventListener('input', function () {
+            const platform = form.platform.value.trim();
+            const accountName = form.accountName.value.trim();
+            const email = form.email.value.trim();
+            const agb = form.agb.checked;
+    
             if (platform && accountName && email && agb) {
-                errorMessage.style.display = 'none';
-                // Trigger the loading animation
-                const overlay = document.getElementById('overlay');
-                const loadingDots = document.getElementById('loadingDots');
-                const circleAnimation = document.getElementById('circleAnimation');
-                const checkmark = document.getElementById('checkmark');
-
-                overlay.style.display = 'flex';
-                loadingDots.style.display = 'flex';
-
-                setTimeout(() => {
-                    loadingDots.style.display = 'none';
-                    circleAnimation.style.animation = 'expandCircle 1s forwards';
-                    checkmark.style.animation = 'showCheckmark 1.6s forwards';
-                    checkmark.style.display = 'block';  // Ensure checkmark is displayed for animation
-
-                    // Wait for the checkmark animation to finish before redirecting
-                    setTimeout(() => {
-                        window.location.href = 'profil.html';
-                    }, 1000); // 2 seconds delay after checkmark animation
-                }, 1000); // 1 second delay for loading animation
+                submitBtn.disabled = false;
+                submitBtn.classList.add('enabled');
             } else {
-                errorMessage.style.display = 'block';
+                submitBtn.disabled = true;
+                submitBtn.classList.remove('enabled');
             }
         });
-
-        const inputs = document.querySelectorAll('#social-media-form input, #social-media-form select');
-        inputs.forEach(input => {
-            input.addEventListener('input', function() {
-                const platform = document.getElementById('platform').value;
-                const accountName = document.getElementById('accountName').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const agb = document.getElementById('agb').checked;
-                const submitBtn = document.getElementById('submitBtn');
-
-                if (platform && accountName && email && agb) {
-                    submitBtn.classList.add('enabled');
-                    submitBtn.style.cursor = 'pointer';
-                    submitBtn.disabled = false;
-                } else {
-                    submitBtn.classList.remove('enabled');
-                    submitBtn.style.cursor = 'not-allowed';
-                    submitBtn.disabled = true;
-                }
-            });
+    
+        // Beim Absenden des Formulars
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+    
+            const formData = new FormData(form);
+    
+            // Ladeanimation starten
+            overlay.style.display = 'flex';
+            loadingDots.style.display = 'flex';
+    
+            // Daten an Apps Script senden
+            fetch('https://script.google.com/macros/s/AKfycby3q_fd2HtPlfMY-PtTQnGULstfUboNudkOP1AR5ZX7jOW9Ts-cVqywYAklAiWbbTUK/exec', {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Ladeanimation fortsetzen und zu profil.html weiterleiten
+                    loadingDots.style.display = 'none';
+                    circleAnimation.style.display = 'block';
+                    circleAnimation.style.animation = 'expandCircle 1s forwards';
+                    checkmark.style.display = 'block';
+                    checkmark.style.animation = 'showCheckmark 1.6s forwards';
+    
+                    // Weiterleitung nach der Animation
+                    setTimeout(() => {
+                        window.location.href = 'influencer-profil.html';
+                    }, 1000);
+                })
+                .catch(error => {
+                    // Selbst wenn ein Fehler auftritt, leite weiter
+                    console.error('Fehler beim Speichern:', error);
+    
+                    // Animation starten, bevor weitergeleitet wird
+                    loadingDots.style.display = 'none';
+                    circleAnimation.style.display = 'block';
+                    circleAnimation.style.animation = 'expandCircle 1s forwards';
+                    checkmark.style.display = 'block';
+                    checkmark.style.animation = 'showCheckmark 1.6s forwards';
+    
+                    // Weiterleitung nach der Animation
+                    setTimeout(() => {
+                        window.location.href = 'influencer-profil.html';
+                    }, 1000);
+                });
         });
     </script>
+    
+    
+
 </body>
 </html>
 
