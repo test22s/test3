@@ -275,15 +275,18 @@
         .modal-content {
             background-color: #fefefe;
             margin: 15% auto;
+            margin-top: 43%;
             padding: 20px;
-            padding-top: 7px;
+            padding-top: 4px;
             border: 1px solid #888;
-            width: 300px;
+            width: 280px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             opacity: 0;
             transform: scale(0.8);
             transition: all 0.3s ease;
+            font-size: smaller;
+            
         }
 
         .modal.show {
@@ -300,7 +303,7 @@
             align-items: center;
             padding: 10px;
             margin: 10px 0;
-            background-color: #f0f0f0;
+            background: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.2s ease;
@@ -358,12 +361,23 @@
                 padding-right: 15px;
                 text-align: center;
                 border-left: none;
+                
             }
 
             .auswählen {
                 flex-direction: column;
                 align-items: center;
                 gap: 10px;
+            }
+
+            .date{
+                font-size: 12px;
+                color: #3d3c3c;
+            }
+
+            .auswahl-info{
+                font-size: smaller;
+                color: #3d3c3c;
             }
 
             .card-txt {
@@ -373,6 +387,7 @@
             .contact-auswahl-btn {
                 text-align: center;
                 margin-top: 10px;
+                margin-left: 38%;
             }
         }
 
@@ -604,7 +619,7 @@
          
     <div id="contactModal" class="modal">
         <div class="modal-content">
-            <h2>Kontaktoptionen <img class="userconnection-img" src="userconnection-icon.png" alt="User-Connect" ></h2>
+            <h2>Kontaktoptionen</h2>
             <div class="contact-option" onclick="contactVia('email')">
                 <img class="email-img" src="email-icon.webp" alt="Email">
                 <span>Email</span>
@@ -748,4 +763,5 @@
     </script>
 </body>
 </html>
+
 
